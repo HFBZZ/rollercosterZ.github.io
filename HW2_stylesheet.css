@@ -1,0 +1,31 @@
+*{
+		font-color: #628D77;
+                font-family:Arial;
+		font-size:18px;
+}
+table{
+        text-align: center;
+        margin-left:auto;
+	    margin-right:auto;
+	    padding: 20px;
+        border-collapse:collapse;
+        background-color:#F2FFE6;
+}
+table, td, th{
+        border:1px solid #DCEDA6;
+        padding:9px;
+
+}
+tr:nth-child(even){
+        background-color:#EDFFB8;
+}
+th {
+	text-align:center;
+	font-weight:bold;
+	width: 150px;
+    border-right-color: #DCEDA6;
+	background-color:#F2FFE6;
+}
+.first{
+	width:300px;
+}	

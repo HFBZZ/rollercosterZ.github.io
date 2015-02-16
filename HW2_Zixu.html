@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<title>HW2_Zhang Zixu</title>
+<link type="text/css" rel="stylesheet" href="HW2_stylesheet.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+  $.getJSON("https://hivelab.org/static/students.json", function(students){
+    var table_student = $('#hw2tabl');
+
+    $.each(students, function(item, student){
+      table_student.append("<tr><td>" + student.Name + "</td><td>" + student.GPA + "</td><td>" + student.GRE_V + "</td><td>" + student.GRE_Q + "</td><td>" + student.Essay + "</td><td>" + student.Recom + "</td></tr>");
+    }); 
+  });
+});
+</script>
+</head>
+<body>
+     <table id="hw2tabl">
+		<tr>
+			<th>Name</th>
+			<th>GPA</th>
+			<th>GRE_V</th>
+			<th>GRE_Q</th>
+			<th>Essay</th>
+			<th>Recom</th>
+		</tr>
+			
+		</tr>
+		
+	</table>
+		
+</body>
+
+</html>
+
+
+

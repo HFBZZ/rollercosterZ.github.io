@@ -1,7 +1,11 @@
-*{
-		font-color: #628D77;
-                font-family:Arial;
-		font-size:18px;
+*{	
+font-size:18px;
+}
+
+h2{ 
+font-size: 34px;
+font-family: Cursive;        
+text-align: center;
 }
 table{
         text-align: center;
@@ -19,12 +23,17 @@ tr:nth-child(even){
         background-color:#EDFFB8;
 }
 th {
-	text-align:center;
+	
+text-align:center;
 	font-weight:bold;
 	width: 150px;
     border-right-color: #DCEDA6;
 	background-color:#F2FFE6;
 }
-.first{
-	width:300px;
+p{
+text-align: left;
+border-right: 85%;
+font-family: cursive;
+font-size:14px;
+font-color: green;
 }	

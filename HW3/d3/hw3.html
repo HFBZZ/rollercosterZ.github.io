@@ -7,7 +7,9 @@
     </head>
     <body>
         <script type="text/javascript">
-            d3.select("body").append("p").text("New paragraph!");
+        d3.csv("tabn460.csv", function(data) {
+    console.log(data);
+});
         </script>
     </body>
 </html>

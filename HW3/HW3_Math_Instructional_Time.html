@@ -1,0 +1,347 @@
+<html>
+<head>
+    <title>HW3_Zixu_Zhang</title>
+	<link rel="stylesheet" type="text/css"  href="stylesheet.css">
+</head>
+<body>
+
+<div id="pieChart"></div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
+<script src="d3pie.min.js"></script>
+<script>
+var pie = new d3pie("pieChart", {
+	"header": {
+		"title": {
+			"text": "How Much Time Children Spend on Math Among Countries",
+			"fontSize": 29,
+			"font": "open sans"
+		},
+		"subtitle": {
+			"text": "A full pie chart to show by country of 4th grade by Zixu Zhang ",
+			"color": "#999999",
+			"fontSize": 22,
+			"font": "open sans"
+		},
+		"titleSubtitlePadding": 7
+	},
+	"footer": {
+		"text": "Data Source: http://nces.ed.gov/programs/digest/d12/tables/dt12_460.asp",
+		"color": "#8e7171",
+		"fontSize": 16,
+		"font": "open sans",
+		"location": "bottom-left"
+	},
+	"size": {
+		"canvasHeight": 1200,
+		"canvasWidth": 1680,
+		"pieInnerRadius": "42%",
+		"pieOuterRadius": "89%"
+	},
+	"data": {
+		"sortOrder": "value-asc",
+		"content": [
+			{
+				"label": "Armenia",
+				"value": 897,
+				"color": "#2383c1"
+			},
+			{
+				"label": "Australia",
+				"value": 851,
+				"color": "#64a61f"
+			},
+			{
+				"label": "Austria",
+				"value": 1008,
+				"color": "#7b6788"
+			},
+			{
+				"label": "Azerbaijan",
+				"value": 808,
+				"color": "#a05c56"
+			},
+			{
+				"label": "Bahrain",
+				"value": 804,
+				"color": "#961919"
+			},
+			{
+				"label": "Belgium",
+				"value": 1010,
+				"color": "#d8d239"
+			},
+			{
+				"label": "Chile",
+				"value": 1228,
+				"color": "#e98125"
+			},
+			{
+				"label": "Chinese Taipei",
+				"value": 989,
+				"color": "#d0743c"
+			},
+			{
+				"label": "Croatia",
+				"value": 776,
+				"color": "#635122"
+			},
+			{
+				"label": "Czech Republic",
+				"value": 782,
+				"color": "#6ada6a"
+			},
+			{
+				"label": "Denmark",
+				"value": 863,
+				"color": "#0b6197"
+			},
+			{
+				"label": "England",
+				"value": 970,
+				"color": "#7c9058"
+			},
+			{
+				"label": "Finland",
+				"value": 779,
+				"color": "#207f32"
+			},
+			{
+				"label": "Georgia",
+				"value": 748,
+				"color": "#44b9af"
+			},
+			{
+				"label": "Germany",
+				"value": 863,
+				"color": "#bca349"
+			},
+			{
+				"label": "Hong Kong-CHN",
+				"value": 1059,
+				"color": "#e4a14a"
+			},
+			{
+				"label": "Hungary",
+				"value": 760,
+				"color": "#a3acb2"
+			},
+			{
+				"label": "Iran",
+				"value": 727,
+				"color": "#8cc2e9"
+			},
+			{
+				"label": "Ireland",
+				"value": 854,
+				"color": "#69a5f9"
+			},
+			{
+				"label": "Italy",
+				"value": 1085,
+				"color": "#5a378f"
+			},
+			{
+				"label": "Japan",
+				"value": 891,
+				"color": "#546e91"
+			},
+			{
+				"label": "Korea",
+				"value": 779,
+				"color": "#8bde94"
+			},
+			{
+				"label": "Kazakhstan",
+				"value": 789,
+				"color": "#d2ab58"
+			},
+			{
+				"label": "Kuwait",
+				"value": 928,
+				"color": "#273c71"
+			},
+			{
+				"label": "Lithuania",
+				"value": 649,
+				"color": "#98bf6e"
+			},
+			{
+				"label": "Malta",
+				"value": 891,
+				"color": "#4caa4a"
+			},
+			{
+				"label": "Morocco",
+				"value": 1040,
+				"color": "#98aac5"
+			},
+			{
+				"label": "Netherlands",
+				"value": 1074,
+				"color": "#cc0f0f"
+			},
+			{
+				"label": "New Zealand",
+				"value": 925,
+				"color": "#31373b"
+			},
+			{
+				"label": "Northern Ireland",
+				"value": 970,
+				"color": "#006291"
+			},
+			{
+				"label": "Norway",
+				"value": 817,
+				"color": "#c2643f"
+			},
+			{
+				"label": "Oman",
+				"value": 999,
+				"color": "#b0a474"
+			},
+			{
+				"label": "Poland",
+				"value": 764,
+				"color": "#a5a29c"
+			},
+			{
+				"label": "Portugal",
+				"value": 940,
+				"color": "#a9c2bb"
+			},
+			{
+				"label": "Qatar",
+				"value": 1068,
+				"color": "#22af8c"
+			},
+			{
+				"label": "Romania",
+				"value": 976,
+				"color": "#7fcecf"
+			},
+			{
+				"label": "Russian Federation",
+				"value": 660,
+				"color": "#9779c6"
+			},
+			{
+				"label": "Saudi Arabia",
+				"value": 977,
+				"color": "#3d3a87"
+			},
+			{
+				"label": "Serbia",
+				"value": 778,
+				"color": "#b77b1b"
+			},
+			{
+				"label": "Singapore",
+				"value": 1012,
+				"color": "#c9c2b6"
+			},
+			{
+				"label": "Slovak Republic",
+				"value": 780,
+				"color": "#7f7dce"
+			},
+			{
+				"label": "Slovenia",
+				"value": 684,
+				"color": "#8db27c"
+			},
+			{
+				"label": "Spain",
+				"value": 884,
+				"color": "#be66a2"
+			},
+			{
+				"label": "Sweden",
+				"value": 849,
+				"color": "#9ed3c5"
+			},
+			{
+				"label": "Thailand",
+				"value": 1201,
+				"color": "#00644b"
+			},
+			{
+				"label": "Tunisia",
+				"value": 963,
+				"color": "#005064"
+			},
+			{
+				"label": "Turkey",
+				"value": 900,
+				"color": "#77979f"
+			},
+			{
+				"label": "United Arab Emirates",
+				"value": 1025,
+				"color": "#77e079"
+			},
+			{
+				"label": "United States",
+				"value": 1078,
+				"color": "#9b72ab"
+			},
+			{
+				"label": "Yemen",
+				"value": 831,
+				"color": "#1f79a7"
+			}
+		]
+	},
+	"labels": {
+		"outer": {
+			"pieDistance": 42
+		},
+		"inner": {
+			"format": "value"
+		},
+		"mainLabel": {
+			"fontSize": 14
+		},
+		"percentage": {
+			"color": "#ffffff",
+			"fontSize": 11,
+			"decimalPlaces": 3
+		},
+		"value": {
+			"color": "#ffecec",
+			"fontSize": 16
+		},
+		"lines": {
+			"enabled": true
+		}
+	},
+	"effects": {
+		"pullOutSegmentOnClick": {
+			"effect": "linear",
+			"speed": 400,
+			"size": 8
+		}
+	},
+	"misc": {
+		"gradient": {
+			"enabled": true,
+			"percentage": 100
+		},
+		"pieCenterOffset": {
+			"x": 30
+		}
+	},
+	"callbacks": {}
+});
+</script>
+
+<div>
+<p>
+From the Pie Chart we can find some interest things. First we may find the students with less Math instructional time are more from European countries. Still, Asian countries have more instructional time generally.</p>
+<p>
+Also, we may find that the smallest and biggest number has almost 100% difference. Which may suggest that among countries in the world, people really have different attitude towards how much Math children should learn when they are young.</p>
+<p>
+In the future study, I would also want to look at several things that are related. Are those countries who teach children more math also have more instructional time on Science class? How are the overall distribution of instructional time among each country? And, how about the total instructional time among all these countries.</p>
+</body>
+</html>

@@ -30,7 +30,7 @@
 						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
-			   .data(dataset)
+			   .data(json)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {

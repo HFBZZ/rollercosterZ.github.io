@@ -39,8 +39,8 @@
                  dataset2 = [dataset[3]];                 
                  dataset3 = [dataset2[0].University_A , dataset2[0].University_B , dataset2[0].University_C , dataset2[0].University_D , dataset2[0].University_E];
 			
-		var xScale = d3.scale.linear()
-			.domain([0, w])
+		var xScale = d3.scale.ordinal()
+			.domain(["University_A","University_B" ])
 			.range([0, 650]);
 		var yScale = d3.scale.linear()
 			.domain([0, d3.max(dataset3, function(d) { return d; })])
@@ -49,12 +49,12 @@
 		var xAxis = d3.svg.axis()
 		        .scale(xScale)
 		        .orient("bottom")
-			.ticks(5);
+			.ticks(4);
 		
 	        var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			.ticks(5);	 
+			.ticks(6);	 
 			
 			
 			//Create SVG element
@@ -108,7 +108,7 @@
 			//Create Y axis
 		svg.append("g")
 				.attr("class", "axis")
-				.attr("transform", "translate(15 ,-11)")
+				.attr("transform", "translate(15 ,-12)")
 				.call(yAxis);	   
 			   
 		

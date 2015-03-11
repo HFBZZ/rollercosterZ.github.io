@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>D3: SVG bar chart with value labels (centered)</title>
 		<script type="text/javascript" src="d3.js"></script>
@@ -16,7 +15,7 @@
 			var barPadding = 1;
 			
 			var dataset; 
-			    d3.json("http://hivelab.org/static/exam1.json", function(error, json) {
+			    d3.json("exam1.json", function(error, json) {
                    if (error) return console.warn(error);
                        data=dataset;//dataset = exam1.json;
                              //visualizeit();
@@ -62,6 +61,6 @@
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
 			
-		</script>
-	</body>
-</html>
+		</script><svg width="500" height="100"></svg>
+	
+</body></html>

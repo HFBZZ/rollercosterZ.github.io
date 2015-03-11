@@ -41,7 +41,7 @@
 			
 		var xScale = d3.scale.ordinal()
 			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])
-			.rangeBands([0, 650]);
+			.rangeBands([0, 630]);
 		var yScale = d3.scale.linear()
 			.domain([0, d3.max(dataset3, function(d) { return d; })])
 			.range([h - barPadding, barPadding]);

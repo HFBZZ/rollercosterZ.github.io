@@ -48,7 +48,8 @@
 			   		return i * (w/dataset3.length);
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 2);
+			   		//return h - (d * 2);
+			   		return yScale(d);
 			  
 			   })
 			   .attr("width", w /dataset3.length - barPadding)

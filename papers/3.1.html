@@ -67,10 +67,10 @@
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (w/dataset3.length);
+			   		return i * (w/dataset3.length) + 15;
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 2);
+			   		return h - (d * 2) + 15;
 			   		//return yScale(d);
 			  
 			   })

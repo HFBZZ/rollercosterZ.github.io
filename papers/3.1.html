@@ -29,7 +29,7 @@
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-			svg.select("rect")
+			svg.selectAll("rect")
 			   .data(dataset2)
 			   .enter()
 			   .append("rect")
@@ -49,12 +49,12 @@
 			   
 			   
 			   
-			   svg.select("rect")
+			   svg.selectAll("rect")
 			   .data(dataset2)
-			   .enter()
+			   //.enter()
 			   .append("rect")
 			   .attr("x", function(d) {
-			   		return (w / 5+barPadding);
+			   		return (w / 5 + barPadding);
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d.University_B * 4);

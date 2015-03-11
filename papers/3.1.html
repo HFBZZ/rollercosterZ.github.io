@@ -34,12 +34,12 @@
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (w/5);
+			   		return i * (w/dataset2.length);
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 4);
 			   })
-			   .attr("width", w / dataset.length - barPadding)
+			   .attr("width", w / dataset2.length - barPadding)
 			   .attr("height", function(d) {
 			   		return d * 4;
 			   })

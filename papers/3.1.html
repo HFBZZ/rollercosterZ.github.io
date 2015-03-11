@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-{
-  "name": "My extension",
- 
-  "permissions": [
-    "http://hivelab.org/static/exam1.json"
-  ],
- 
-}
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,7 +17,7 @@
 			var barPadding = 1;
 			
 			var dataset;
-			d3.json("http://hivelab.org/static/exam1.json", function(data) {
+			d3.json("exam1.json", function(data) {
                   
                   console.log(data);
                   dataset = data;

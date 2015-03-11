@@ -17,10 +17,10 @@
 			var barPadding = 1;
 			
 			var dataset;
-			d3.json("exam1.json", function(json) {
+			d3.json("exam1.json", function(data) {
                   
-                  console.log(json);
-                  dataset = json;
+                  console.log(data);
+                  dataset = data;
                         //data = json;
                         //visualizeit();
                  });
@@ -35,7 +35,7 @@
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (w / dataset.length);
+			   		return i.year;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 4);

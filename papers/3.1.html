@@ -43,8 +43,11 @@
 			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])
 			.rangeBands([0, 650]);
 		var yScale = d3.scale.linear()
-			.domain([0 , h])
-			.range([13,d3.max(dataset, function(d) { return d; })*2]);	
+			.domain([0, d3.max(dataset3, function(d) { return d; })])
+			.range([h - barPadding, barPadding]);
+			
+			//.domain([0 , h])
+			//.range([13,d3.max(dataset, function(d) { return d; })*2]);	
 			
 		var xAxis = d3.svg.axis()
 		        .scale(xScale)

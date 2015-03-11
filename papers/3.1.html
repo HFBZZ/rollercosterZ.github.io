@@ -33,18 +33,18 @@
 			   .data(dataset2)
 			   .enter()
 			   .append("rect")
-			   .attr("x", function(d, i) {
-			   		return i * (w/dataset2.length);
+			   .attr("x", function(d) {
+			   		return barPadding;
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 4);
+			   		return h - (d.University_A * 4);
 			   })
-			   .attr("width", w / dataset2.length - barPadding)
+			   .attr("width", w / 5 - barPadding)
 			   .attr("height", function(d) {
-			   		return d * 4;
+			   		return d.University_A * 4;
 			   })
 			   .attr("fill", function(d) {
-					return "rgb(0, 0, " + (d * 10) + ")";
+					return "rgb(0, 0, " + (d.University_A * 10) + ")";
 			   });
 			//svg.selectAll("text")
 			   //.data(dataset)
@@ -65,6 +65,6 @@
 			   //.attr("fill", "white");
 			});
 			
-		</script><svg width="500" height="100"></svg>
+		</script>
 	
 </body></html>

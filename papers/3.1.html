@@ -16,7 +16,7 @@
 			//Width and height
 			var w = 650;
 			var h = 275;
-			var barPadding = 10;
+			var barPadding = 8;
 			//var padding = 20
 			var dataset;
 			d3.json("exam1.json", function(data) {
@@ -59,10 +59,9 @@
 			   		return d * 2;
 			   })
 			   .attr("fill", function(d) {
-					return "rgb(76, 23, " + (d * 2) + ")";
+					return "rgb(142, 23, " + (d * 2) + ")";
 	                   });
 	                
-	              
 			svg.selectAll("text")
 			   .data(dataset3)
 			   .enter()

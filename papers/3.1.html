@@ -30,14 +30,14 @@
 			var barPadding = 8;
 			//var padding = 20
 			var dataset;
-			d3.json("exam1.json", function(data) {
+			d3.json("https://hivelab.org/static/exam1.json", function(data) {
                   
                   console.log(data);
 			
                   dataset = data;
-                        
-                 dataset2 = [dataset[3]];                 
-                 dataset3 = [dataset2[0].University_A , dataset2[0].University_B , dataset2[0].University_C , dataset2[0].University_D , dataset2[0].University_E];
+                  dataset2 = [dataset[3]["University A"],  dataset[3]["University B"],dataset[3]["University C"],dataset[3]["University D"],dataset[3]["University E"]];
+                 //dataset2 = [dataset[3]];                 
+                // dataset3 = [dataset2[0].University_A , dataset2[0].University_B , dataset2[0].University_C , dataset2[0].University_D , dataset2[0].University_E];
 			
 		var xScale = d3.scale.ordinal()
 			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])

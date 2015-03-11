@@ -1,8 +1,8 @@
 [
    {
       "Year":"Freshman",
-      "University_A":120,
-      "University_B":63,
+      "University A":120,
+      "University B":63,
       "University_C":55,
       "University_D":124,
       "University_E":90
@@ -17,7 +17,7 @@
    },
    {
       "Year":"Junior",
-      "University_A":100,
+      "University A":100,
       "University_B":92,
       "University_C":48,
       "University_D":101,

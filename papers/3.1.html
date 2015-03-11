@@ -70,7 +70,7 @@
 			   		return i * (w/dataset3.length) + 15;
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 2) - 15;
+			   		return h - (d * 2) - 25;
 			   		//return yScale(d);
 			  
 			   })
@@ -102,13 +102,13 @@
 		
 		svg.append("g")
 				.attr("class", "axis")
-				.attr("transform", "translate(15," + (h - 15) + ")")
+				.attr("transform", "translate(10," + (h - 10) + ")")
 				.call(xAxis);
 			
 			//Create Y axis
 		svg.append("g")
 				.attr("class", "axis")
-				.attr("transform", "translate(15 ,15)")
+				.attr("transform", "translate(15 ,25)")
 				.call(yAxis);	   
 			   
 		

@@ -16,10 +16,11 @@
 			var h = 100;
 			var barPadding = 1;
 			
-			d3.json("exam1/bar_charts/exam1.json", function(error, json) {
+			var dataset;
+			d3.json("exam1.json", function(error, json) {
                   if (error) return console.warn(error);
                         data = json;
-                        visualizeit();
+                        //visualizeit();
                  });
 			
 			//Create SVG element

@@ -57,7 +57,7 @@
 	        var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			.ticks(7);	 
+			.ticks(1);	 
 			
 			
 			//Create SVG element
@@ -114,7 +114,12 @@
 				.attr("transform", "translate(15 ,-12)")
 				.call(yAxis);	   
 			   
-		
+		svg.append("text")
+                            .attr("class", "x label")
+                            .attr("text-anchor", "end")
+                            .attr("x", w-20)
+                            .attr("y", h - 6)
+                            .text("University");
 		           
 		           
 		           

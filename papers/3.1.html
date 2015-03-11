@@ -34,14 +34,14 @@
 			   .data(dataset3)
 			   .enter()
 			   .append("rect")
-			   .attr("x", function(d) {
-			   		return barPadding;
+			   .attr("x", function(d, i) {
+			   		return i * (w/dataset3.length);
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 4);
 			  
 			   })
-			   .attr("width", w / 5 - barPadding)
+			   .attr("width", w /dataset3.length - barPadding)
 			   .attr("height", function(d) {
 			   		return d * 4;
 			   })

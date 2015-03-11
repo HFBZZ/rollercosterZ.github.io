@@ -23,13 +23,14 @@
                   dataset = data;
                         
                  dataset2 = [dataset[3]];
+                 dataset3 = [dataset2.University_A , dataset2.University_B , dataset2.University_C , dataset2.University_D , dataset2.University_E]
 			
 			//Create SVG element
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-			svg.select("rect")
+			svg.selectAll("rect")
 			   .data(dataset2)
 			   .enter()
 			   .append("rect")
@@ -38,6 +39,7 @@
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d.University_A * 4);
+			  
 			   })
 			   .attr("width", w / 5 - barPadding)
 			   .attr("height", function(d) {
@@ -47,7 +49,7 @@
 					return "rgb(0, 0, " + (d.University_A * 10) + ")";
 	                   });
 	                
-	               svg.select("rect")
+	               svg.selectAll("rect")
 			   .data(dataset2)
 			   //.enter()
 			   .append("rect")

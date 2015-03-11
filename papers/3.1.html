@@ -21,8 +21,7 @@
                   
                   console.log(data);
                   dataset = data;
-                        //data = json;
-                        //visualizeit();
+                        
                  });
 			
 			//Create SVG element
@@ -31,14 +30,14 @@
 						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
-			   .data()
+			   .data(dataset)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i[3]["University_A"];
+			   		return i * (w/5);
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 4);
+			   		return h - (d[3] * 4);
 			   })
 			   .attr("width", w / dataset.length - barPadding)
 			   .attr("height", function(d) {

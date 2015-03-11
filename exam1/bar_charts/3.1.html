@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>D3: SVG bar chart with value labels (centered)</title>
 		<script type="text/javascript" src="d3.js"></script>
@@ -14,12 +16,11 @@
 			var h = 100;
 			var barPadding = 1;
 			
-			var dataset; 
-			    d3.json("exam1.json", function(error, json) {
-                   if (error) return console.warn(error);
-                       data=dataset;//dataset = exam1.json;
-                             //visualizeit();
-                    });
+			d3.json("exam1/bar charts/exam1.json", function(error, json) {
+                  if (error) return console.warn(error);
+                        data = json;
+                        visualizeit();
+                 });
 			
 			//Create SVG element
 			var svg = d3.select("body")

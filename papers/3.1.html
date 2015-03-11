@@ -40,8 +40,8 @@
                  dataset3 = [dataset2[0].University_A , dataset2[0].University_B , dataset2[0].University_C , dataset2[0].University_D , dataset2[0].University_E];
 			
 		var xScale = d3.scale.linear()
-			.domain([0, w])
-			.range([barPadding, w - barPadding * 2]);
+			.domain([0, w+10])
+			.range([0, 5]);
 		var yScale = d3.scale.linear()
 			.domain([0, d3.max(dataset3, function(d) { return d; }) + 85])
 			.range([h - barPadding, barPadding]);	
@@ -102,13 +102,13 @@
 		
 		svg.append("g")
 				.attr("class", "axis")
-				.attr("transform", "translate(10," + (h - 20) + ")")
+				.attr("transform", "translate(5," + (h - 20) + ")")
 				.call(xAxis);
 			
 			//Create Y axis
 		svg.append("g")
 				.attr("class", "axis")
-				.attr("transform", "translate(15 ,-20)")
+				.attr("transform", "translate(15 ,-15)")
 				.call(yAxis);	   
 			   
 		

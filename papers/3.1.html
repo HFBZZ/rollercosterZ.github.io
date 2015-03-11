@@ -43,7 +43,7 @@
 			.domain([0, w])
 			.range([0, 650]);
 		var yScale = d3.scale.linear()
-			.domain([0, d3.max(dataset3, function(d) { return d; }) + 85])
+			.domain([0, d3.max(dataset3, function(d) { return d; })])
 			.range([h - barPadding, barPadding]);	
 			
 		var xAxis = d3.svg.axis()
@@ -108,7 +108,7 @@
 			//Create Y axis
 		svg.append("g")
 				.attr("class", "axis")
-				.attr("transform", "translate(15 ,-10)")
+				.attr("transform", "translate(15 ,-11)")
 				.call(yAxis);	   
 			   
 		

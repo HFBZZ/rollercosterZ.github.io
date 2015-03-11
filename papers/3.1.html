@@ -43,7 +43,7 @@
 			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])
 			.rangeBands([0, 640]);
 		var yScale = d3.scale.linear()
-			.domain([0, d3.max(dataset3, function(d) { return d; })])
+			.domain([0, d3.max(dataset2, function(d) { return d; })])
 			.range([h - barPadding, barPadding]);
 			
 			//.domain([0 , h])
@@ -66,18 +66,18 @@
 						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
-			   .data(dataset3)
+			   .data(dataset2)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (w/dataset3.length) + 15;
+			   		return i * (w/dataset2.length) + 15;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 2) - 20;
 			   		//return yScale(d);
 			  
 			   })
-			   .attr("width",w /dataset3.length - barPadding)
+			   .attr("width",w /dataset2.length - barPadding)
 			   .attr("height", function(d) {
 			   		return d * 2;
 			   })
@@ -86,7 +86,7 @@
 	                   });
 	                
 			svg.selectAll("text")
-			   .data(dataset3)
+			   .data(dataset2)
 			   .enter()
 			   .append("text")
 			   .text(function(d) {
@@ -94,7 +94,7 @@
 			   })
 			   .attr("text-anchor", "middle")
 			   .attr("x", function(d, i) {
-			   		return i * (w/ dataset3.length) + (w / dataset3.length - barPadding) / 2 + 15;
+			   		return i * (w/ dataset2.length) + (w / dataset2.length - barPadding) / 2 + 15;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 2);

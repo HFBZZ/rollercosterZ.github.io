@@ -41,7 +41,7 @@
 			
 		var xScale = d3.scale.ordinal()
 			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])
-			.rangeBands([0, 630]);
+			.rangeBands([0, 640]);
 		var yScale = d3.scale.linear()
 			.domain([0, d3.max(dataset3, function(d) { return d; })])
 			.range([h - barPadding, barPadding]);
@@ -63,26 +63,26 @@
 			//Create SVG element
 		        var svg = d3.select("body")
 						.append("svg")
-						.attr("width", 650)
+						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
 			   .data(dataset3)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (650/dataset3.length) + 15;
+			   		return i * (w/dataset3.length) + 15;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 2) - 20;
 			   		//return yScale(d);
 			  
 			   })
-			   .attr("width", 650 /dataset3.length - barPadding)
+			   .attr("width",w /dataset3.length - barPadding)
 			   .attr("height", function(d) {
 			   		return d * 2;
 			   })
 			   .attr("fill", function(d) {
-					return "rgb(142, 83, " + (d * 2) + ")";
+					return "rgb(142, 195, " + (d * 2) + ")";
 	                   });
 	                
 			svg.selectAll("text")
@@ -94,7 +94,7 @@
 			   })
 			   .attr("text-anchor", "middle")
 			   .attr("x", function(d, i) {
-			   		return i * (650/ dataset3.length) + (650 / dataset3.length - barPadding) / 2 + 15;
+			   		return i * (w/ dataset3.length) + (w / dataset3.length - barPadding) / 2 + 15;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 2);

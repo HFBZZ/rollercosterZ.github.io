@@ -22,7 +22,7 @@
                   console.log(data);
                   dataset = data;
                         
-                 
+                 dataset2 = [dataset[3]];
 			
 			//Create SVG element
 			var svg = d3.select("body")
@@ -30,7 +30,7 @@
 						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
-			   .data(dataset)
+			   .data(dataset2)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {

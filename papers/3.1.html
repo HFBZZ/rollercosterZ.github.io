@@ -29,7 +29,7 @@
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-			svg.selectAll("rect")
+			svg.select("rect")
 			   .data(dataset2)
 			   .enter()
 			   .append("rect")
@@ -47,7 +47,7 @@
 					return "rgb(0, 0, " + (d.University_A * 10) + ")";
 	                   });
 	                
-	               svg.selectAll("rect")
+	               svg.select("rect")
 			   .data(dataset2)
 			   //.enter()
 			   .append("rect")

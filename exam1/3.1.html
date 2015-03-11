@@ -20,6 +20,7 @@
 			d3.json("exam1.json", function(json) {
                   
                   console.log(json);
+                  dataset = json;
                         //data = json;
                         //visualizeit();
                  });
@@ -30,7 +31,7 @@
 						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
-			   .data(dataset)
+			   .data(dataset.length)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {

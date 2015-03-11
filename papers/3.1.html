@@ -43,7 +43,7 @@
 			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])
 			.rangeBands([0, 650]);
 		var yScale = d3.scale.linear()
-			.domain([h, h-d3.max(dataset, function(d) { return d; })])
+			.domain([h-13 , h-(d3.max(dataset, function(d) { return d; })*2)])
 			.range([0,275]);	
 			
 		var xAxis = d3.svg.axis()
@@ -54,7 +54,7 @@
 	        var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			.ticks(6);	 
+			.ticks(7);	 
 			
 			
 			//Create SVG element

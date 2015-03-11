@@ -29,7 +29,7 @@
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-			svg.selectAll("rect")
+			svg.select("rect")
 			   .data(dataset2)
 			   .enter()
 			   .append("rect")
@@ -45,21 +45,25 @@
 			   })
 			   .attr("fill", function(d) {
 					return "rgb(0, 0, " + (d.University_A * 10) + ")";
-		
-		           
+	                   });
+	                
+	                svg.select("rect")
+			   .data(dataset2)
+			   .enter()
+			   .append("rect")
 			   .attr("x", function(d) {
-			   		return (w / 5 + barPadding);
+			   		return barPadding;
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d.University_B * 4);
+			   		return h - (d.University_A * 4);
 			   })
 			   .attr("width", w / 5 - barPadding)
 			   .attr("height", function(d) {
-			   		return d.University_B * 4;
+			   		return d.University_A * 4;
 			   })
 			   .attr("fill", function(d) {
-					return "rgb(0, 0, " + (d.University_B * 10) + ")";
-			   });
+					return "rgb(0, 0, " + (d.University_A * 10) + ")";
+	                   });
 			//svg.selectAll("text")
 			   //.data(dataset)
 			   //.enter()

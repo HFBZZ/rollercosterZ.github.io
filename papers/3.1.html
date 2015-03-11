@@ -87,10 +87,20 @@
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "18px")
 			   .attr("fill", "white");
-			   
-		  
-			   
-			});
+		
+		           });
+		           
+		           
+		 svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(0," + (h - padding) + ")")
+				.call(xAxis);
+			
+			//Create Y axis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(" + padding + ",0)")
+				.call(yAxis);
 		</script>
 	
 </body></html>

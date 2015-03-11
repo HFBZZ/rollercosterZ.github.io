@@ -70,7 +70,7 @@
 			   		return i * (w/dataset3.length) + 15;
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 2) + 15;
+			   		return h - (d * 2) + 45;
 			   		//return yScale(d);
 			  
 			   })
@@ -91,10 +91,10 @@
 			   })
 			   .attr("text-anchor", "middle")
 			   .attr("x", function(d, i) {
-			   		return i * (w / dataset3.length) + (w / dataset3.length - barPadding) / 2;
+			   		return i * (w / dataset3.length) + (w / dataset3.length - barPadding) / 2 + 15;
 			   })
 			   .attr("y", function(d) {
-			   		return h - (d * 2) + 24;
+			   		return h - (d * 2) + 54;
 			   })
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "18px")

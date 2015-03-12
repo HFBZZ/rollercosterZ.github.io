@@ -62,53 +62,36 @@
 			.orient("left")
 			.ticks(0);	 
 			
-		var svg = d3.select("body")
-		        .append("svg")
-		        .attr("width", w)
-			//.attr("height", h);
-			svg.selectAll("rect")
-			   .data(dataset3)
-			   .enter()
-			   .append("rect")
-			   .attr("x", function(d, i) {
-			   		return i * (w/dataset3.length) + 15;
-			   })
-			   .attr("y", function(d) {
-			   		return h - (d * 2) - 20 + dataset2;
-			   		//return yScale(d);
-			  
-			   })
-			   .attr("width",w /dataset2.length - barPadding)
-			   .attr("height", function(d) {
-			   		return d * 2;
-			   })
-			   .attr("fill", function(d) {
-					return "rgb(142, 34, " + (d * 2) + ")";
-	                   });	
+		
 			//Create SVG element
 		        var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
 			svg.selectAll("rect")
-			   .data(dataset2)
+			for m=1
+			m = m+1;
+			if (m <=5)
+			   .data(datasetm)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (w/dataset2.length) + 15;
+			   		return i * (w/datasetm.length) + 15;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 2) - 20;
 			   		//return yScale(d);
 			  
 			   })
-			   .attr("width",w /dataset2.length - barPadding)
+			   .attr("width",w /datasetm.length - barPadding)
 			   .attr("height", function(d) {
 			   		return d * 2;
 			   })
 			   .attr("fill", function(d) {
 					return "rgb(142, 195, " + (d * 2) + ")";
 		           });
+		           else
+		           break;
 	           svg.selectAll("text")
 			   .data(dataset2)
 			   .enter()

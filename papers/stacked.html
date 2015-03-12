@@ -69,20 +69,20 @@
 						.attr("width", w)
 						.attr("height", h);
 			
-			for (m = 0; m < 5; i++){
+			for (m = 0; m < 5; m++){
 			   svg.selectAll("rect")
-			   .data(dataset+m+)
+			   .data(datasetm)
 			   .enter()
 			   .append("rect")
 			   .attr("x", function(d, i) {
-			   		return i * (w/dataset+m+.length) + 15;
+			   		return i * (w/datasetm.length) + 15;
 			   })
 			   .attr("y", function(d) {
 			   		return h - (d * 2) - 20;
 			   		//return yScale(d);
 			  
 			   })
-			   .attr("width",w /dataset+m+.length - barPadding)
+			   .attr("width",w /datasetm.length - barPadding)
 			   .attr("height", function(d) {
 			   		return d * 2;
 			   })

@@ -86,32 +86,8 @@
 			   })
 			   .attr("fill", function(d) {
 					return "rgb(142, 195, " + (d * 2) + ")";
-	           });
-                       var svg = d3.select("body")
-		        .append("svg")
-		        .attr("width", w)
-			//.attr("height", h);
-			svg.selectAll("rect")
-			   .data(dataset3)
-			   .enter()
-			   .append("rect")
-			   .attr("x", function(d, i) {
-			   		return i * (w/dataset3.length) + 15;
-			   })
-			   .attr("y", function(d) {
-			   		return h - (d * 2) - 20 + dataset2[d];
-			   		//return yScale(d);
-			  
-			   })
-			   .attr("width",w /dataset2.length - barPadding)
-			   .attr("height", function(d) {
-			   		return d * 2;
-			   })
-			   .attr("fill", function(d) {
-					return "rgb(142, 34, " + (d * 2) + ")";
-	                   });
-	                
-			svg.selectAll("text")
+		           });
+	           svg.selectAll("text")
 			   .data(dataset2)
 			   .enter()
 			   .append("text")
@@ -146,6 +122,32 @@
                             .attr("x",115)
                             .attr("y", 25)
                             .text("# of Students");
+	           
+                       var svg = d3.select("body")
+		        .append("svg")
+		        .attr("width", w)
+			//.attr("height", h);
+			svg.selectAll("rect")
+			   .data(dataset3)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w/dataset3.length) + 15;
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d * 2) - 20 + dataset2[d];
+			   		//return yScale(d);
+			  
+			   })
+			   .attr("width",w /dataset2.length - barPadding)
+			   .attr("height", function(d) {
+			   		return d * 2;
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(142, 34, " + (d * 2) + ")";
+	                   });
+	                
+			
 		           
 		           
 		           

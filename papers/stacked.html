@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Bar Chart of IE Students in Five Universities</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<style type="text/css">
+		
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: black;
+				shape-rendering: crispEdges;
+			}
+			
+			.axis text {
+				font-family: sans-serif;
+				font-size: 11px;
+			}
+			</style>
+	</head>
+	<body>
+	<p>Senior IE Students Number Among Universities</p>	
+		
+		<script type="text/javascript">
+			//Width and height
+			var w = 650;
+			var h = 1475;
+			var barPadding = 8;
+			//var padding = 20
+			var dataset;
+			d3.json("https://hivelab.org/static/exam1.json", function(data) {
+                  
+                  console.log(data);
+			
+                  dataset = data;
+                  dataset2 = [dataset[3]["University A"],  dataset[3]["University B"],dataset[3]["University C"],dataset[3]["University D"],dataset[3]["University E"]];
+                  dataset3 = [dataset[0]["University A"],  dataset[0]["University B"],dataset[0]["University C"],dataset[0]["University D"],dataset[0]["University E"]];
+                  dataset4 = [dataset[1]["University A"],  dataset[1]["University B"],dataset[1]["University C"],dataset[1]["University D"],dataset[1]["University E"]];
+                  dataset5 = [dataset[2]["University A"],  dataset[2]["University B"],dataset[2]["University C"],dataset[2]["University D"],dataset[2]["University E"]];
+                 //dataset2 = [dataset[3]];                 
+                // dataset3 = [dataset2[0].University_A , dataset2[0].University_B , dataset2[0].University_C , dataset2[0].University_D , dataset2[0].University_E];
+			
+		var xScale = d3.scale.ordinal()
+			.domain(["University_A" , "University_B", "University_C","University_D" , "University_E" ])
+			.rangeBands([0, 640]);
+		var yScale = d3.scale.linear()
+			.domain([0, d3.max(dataset2, function(d) { return d; })])
+			.range([h - barPadding, barPadding]);
+			
+			//.domain([0 , h])
+			//.range([13,d3.max(dataset, function(d) { return d; })*2]);	
+			
+		var xAxis = d3.svg.axis()
+		        .scale(xScale)
+		        .orient("bottom")
+			//.ticks(5);
+		
+	        var yAxis = d3.svg.axis()
+			.scale(yScale)
+			.orient("left")
+			.ticks(0);	 
+			
+			
+			//Create SVG element
+		        var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+			svg.selectAll("rect")
+			   .data(dataset2)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w/dataset2.length) + 15;
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d * 2) - 20;
+			   		//return yScale(d);
+			  
+			   })
+			   .attr("width",w /dataset2.length - barPadding)
+			   .attr("height", function(d) {
+			   		return d * 2;
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(142, 195, " + (d * 2) + ")";
+	           });
+
+			svg.selectAll("rect")
+			   .data(dataset3)
+			   //.enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w/dataset2.length) + 15;
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d * 2) - 20 - dataset2[0];
+			   		//return yScale(d);
+			  
+			   })
+			   .attr("width",w /dataset2.length - barPadding)
+			   .attr("height", function(d) {
+			   		return d * 2;
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(142, 34, " + (d * 2) + ")";
+	                   });
+	                
+			svg.selectAll("text")
+			   .data(dataset2)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d;
+			   })
+			   .attr("text-anchor", "middle")
+			   .attr("x", function(d, i) {
+			   		return i * (w/ dataset2.length) + (w / dataset2.length - barPadding) / 2 + 15;
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d * 2);
+			   })
+			   .attr("font-family", "sans-serif")
+			   .attr("font-size", "18px")
+			   .attr("fill", "white");
+		
+		svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(15," + (h - 20) + ")")
+				.call(xAxis);
+			
+			//Create Y axis
+		svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(15 ,-12)")
+				.call(yAxis);	   
+			   
+		svg.append("text")
+                            .attr("class", "y label")
+                            .attr("text-anchor", "end")
+                            .attr("x",115)
+                            .attr("y", 25)
+                            .text("# of Students");
+		           
+		           
+		           
+        });	 
+		</script>
+	
+</body></html>

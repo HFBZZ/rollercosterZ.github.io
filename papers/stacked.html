@@ -68,10 +68,9 @@
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-			svg.selectAll("rect")
-			for m=1;
-			m = m+1;
-			if (m <=5)
+			
+			for (m = 0; m < 5; i++){
+			   svg.selectAll("rect")
 			   .data(datasetm)
 			   .enter()
 			   .append("rect")
@@ -89,9 +88,8 @@
 			   })
 			   .attr("fill", function(d) {
 					return "rgb(142, 195, " + (d * 2) + ")";
-		           });
-		           else
-		           break;
+		           });};
+		           
 	           svg.selectAll("text")
 			   .data(dataset2)
 			   .enter()

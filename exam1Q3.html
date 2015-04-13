@@ -84,29 +84,25 @@ var height = 300 - margin.top - margin.bottom;
 var dataset;
     d3.json("https://hivelab.org/static/exam1.json", function(data) {
      console.log(data);
-     dataset1 = data[0];
-     dataset2 = data[1];
-     dataset3 = data[2];
-     dataset4 = data[3];
     });
   dataset = [{
      data: [{
             U: "University A",
-            C: dataset1["University A"]
+            C: data[0]["University A"]
         }, {
             U: "University B",
-            C: dataset1["University B"]
+            C: data[0]["University B"]
         }, {
             U: "University C",
-            C: dataset1["University C"]
+            C: data[0]["University C"]
         }, {
             U: "University D",
-            C: dataset1["University D"]
+            C: data[0]["University D"]
         }, {
             U: "University E",
-            C: dataset1["University E"]
+            C: data[0]["University E"]
         }],
-        name: dataset1.Year
+        name: data[0].Year
     }, {
         data: [{
             U: "University A",

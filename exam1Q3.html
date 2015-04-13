@@ -73,18 +73,15 @@ d3.json("https://hivelab.org/static/exam1.json", function(data) {
 					
 				var YEAR=[];
 
-				for(i=0;i<Univ.length){
-        i = i+1;
+				for(i=0;i<Univ.length;i++){
 
 				YEAR[i]=Univ[i].Year;
 				}
 
 
-				for(j=0;j< YEAR.length){
-          j = j+1;
+				for(j=0;j< YEAR.length;j++){
 
-				  for(i=0;i< UnivObj.length){
-            i = i+1;
+				  for(i=0;i< UnivObj.length;i++){
 					UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
 				}}
 			data= UnivObj;

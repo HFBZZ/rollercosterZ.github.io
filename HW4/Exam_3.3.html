@@ -19,6 +19,7 @@ body {
   shape-rendering: crispEdges;
 }
 </style>
+
 <body>
 <p>Click on bars to explore!!</p>
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -43,43 +44,43 @@ var svg = d3.select("body").append("svg")
     .attr("height", 2*(height + 60))
     .append("g")
     .attr("transform", "translate(" + 40 +"," + 30 + ")");
-    
+	
 d3.json("https://hivelab.org/static/exam1.json", function(data) {
-          Univ = data;
-         UNIV=Object.keys(Univ[0]).filter(
-          function(d) {
-          return (d !== "Year");
-          })
-        UnivObj = Object.keys(Univ[0]).filter(
-        function(d) {
-        return (d !== "Year");
-          }
-          )
+   				Univ = data;
+				 UNIV=Object.keys(Univ[0]).filter(
+					function(d) {
+					return (d !== "Year");
+					})
+				UnivObj = Object.keys(Univ[0]).filter(
+				function(d) {
+				return (d !== "Year");
+					}
+					)
         .map(
-          function(d) {
-            return {"name": d}
-          });
-var YEAR=[];
+					function(d) {
+						return {"name": d}
+					});
+					
+				var YEAR=[];
 
-  for(i=0;i<Univ.length;i++){
-    YEAR[i]=Univ[i].Year;
-        }
+				for(i=0;i<Univ.length;i++){
 
-  for(j=0;j< YEAR.length;j++){
+				YEAR[i]=Univ[i].Year;
+				}
 
-    for(i=0;i< UnivObj.length;i++){
-      UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
-  }}
-  
-  data= UnivObj;
-  
-  console.log(data);
+
+				for(j=0;j< YEAR.length;j++){
+
+				  for(i=0;i< UnivObj.length;i++){
+					UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
+				}}
+			data= UnivObj;
+	console.log(data);
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "name"; }));
-  
   data.forEach(function(d) {
     var y0 = 0;
     d.ages = color.domain().map(function(Years) { 
-  return {
+	return {
     Years: Years, name: d.name, Freshman: d.Freshman, Sophomore: d.Sophomore, Junior: d.Junior,Senior: d.Senior, y0: y0, y1: y0 += +d[Years]
   }; });
     d.total = d.ages[d.ages.length - 1].y1;

@@ -117,7 +117,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("y", function(d) { return y(d[1]); })
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
-            .style("fill", colors(2) );
+            .style("fill", pink );
             //2
             chart.selectAll(".bar2")
             .data(dataset2)
@@ -127,7 +127,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("y", function(d) { return y(d[1])-newarray[0][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
-            .style("fill", colors(4) );
+            .style("fill", red );
             //3
             chart.selectAll(".bar3")
             .data(dataset3)

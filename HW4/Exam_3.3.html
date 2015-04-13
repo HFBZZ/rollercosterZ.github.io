@@ -43,3 +43,19 @@ var svg = d3.select("body").append("svg")
     .attr("height", 2*(height + 60))
     .append("g")
     .attr("transform", "translate(" + 40 +"," + 30 + ")");
+    
+d3.json("https://hivelab.org/static/exam1.json", function(data) {
+          Univ = data;
+         UNIV=Object.keys(Univ[0]).filter(
+          function(d) {
+          return (d !== "Year");
+          })
+        UnivObj = Object.keys(Univ[0]).filter(
+        function(d) {
+        return (d !== "Year");
+          }
+          )
+        .map(
+          function(d) {
+            return {"name": d}
+          });

@@ -41,7 +41,7 @@ var x = d3.scale.ordinal()
 var y = d3.scale.linear()
     .rangeRound([height, 0]);
 var color = d3.scale.ordinal()
-    .range(["#246B24","#FF9933"]);
+    .range(["#246B24", "#99CC00", "#D6AD33", "#FF9933"]);
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
@@ -50,14 +50,14 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .tickFormat(d3.format(".2s"));
 var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", 2*(height + margin.top + margin.bottom))
+    .attr("width", width + 60)
+    .attr("height", 2*(height + 60))
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" 40 "," 30")");
 	
 d3.json("https://hivelab.org/static/exam1.json", function(data) {
    				Univ = data;
-				 UnivName=Object.keys(Univ[0]).filter(
+				 UNIV=Object.keys(Univ[0]).filter(
 					function(d) {
 					return (d !== "Year");
 					})
@@ -65,20 +65,27 @@ d3.json("https://hivelab.org/static/exam1.json", function(data) {
 				function(d) {
 				return (d !== "Year");
 					}
-					).map(
+					)
+        .map(
 					function(d) {
-						return {
-						"name": d
-						}
+						return {"name": d}
 					});
 					
-				var YearName=[];
-				for(i=0;i<Univ.length;i++){
-				YearName[i]=Univ[i].Year;
+				var YEAR=[];
+
+				for(i=0;i<Univ.length){
+        i = i+1;
+
+				YEAR[i]=Univ[i].Year;
 				}
-				for(j=0;j< YearName.length;j++){
-				  for(i=0;i< UnivObj.length;i++){
-					UnivObj[i][ YearName[j]]=Univ[j][UnivName[i]];
+
+
+				for(j=0;j< YEAR.length){
+          j = j+1;
+
+				  for(i=0;i< UnivObj.length){
+            i = i+1;
+					UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
 				}}
 			data= UnivObj;
 	console.log(data);

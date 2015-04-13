@@ -121,35 +121,35 @@ state.selectAll("rect")
       .style("fill", function(d) { return color(d.Years); })
     .on("click", function(d) {
     
-        if(d.Years==="Freshman"){
+if(d.Years==="Freshman"){
         svg.selectAll("rect")
           
           .transition()
           .attr("y", function(d) { return y(d.y1); })
-          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1)+1; })
           .style("fill", function(d) { return color(d.Years); })
 		}
-        else if(d.Years==="Sophomore"){
+else if(d.Years==="Sophomore"){
         svg.selectAll("rect")
           .transition()
           .attr("y", function(d) { return y(d.y1-d.Freshman); })
-          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1)+1; })
       .style("fill", function(d) { return color(d.Years); })
 		
 			}
-	else if(d.Years==="Junior"){
+else if(d.Years==="Junior"){
 	svg.selectAll("rect")
 	  .transition()
           .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore); })
-          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1)+1; })
           .style("fill", function(d) { return color(d.Years); })
 		
 			}
-		else if(d.Years==="Senior"){
+else if(d.Years==="Senior"){
 		  svg.selectAll("rect")
 		   .transition()
           .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore-d.Junior); })
-            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+            .attr("height", function(d) { return y(d.y0) - y(d.y1)+1; })
       .style("fill", function(d) { return color(d.Years); })
 		
 			}	

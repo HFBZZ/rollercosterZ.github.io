@@ -213,7 +213,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
               .transition()
               .duration(500)
             .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[1][d[0]]+ndataset1[i][1]; })
+            .attr("y", function(d,i) { return y(d[1])-newarray[1][d[0]]+dataset1[i][1]; })
             .style("opacity", 1);
             
             chart.selectAll(".bar4")

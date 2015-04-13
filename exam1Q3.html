@@ -94,7 +94,7 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
         console.log(data3);
         console.log(data4);
         var maxnum = 0;
-        for(k in ata1){
+        for(k in data1){
           var curr = data1[k][1]+data2[k][1]+data3[k][1]+data4[k][1];
           if(curr > maxnum){
             maxnum = curr;

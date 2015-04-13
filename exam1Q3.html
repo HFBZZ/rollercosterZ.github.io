@@ -3,7 +3,7 @@
 <h1>The Compariosn of IE Students Numbers between Five Univ.</h1>
 <style>
 body {
-  font: 16px cursive;
+  font: 13px cursive;
 }
 .axis path,
 .axis line {
@@ -116,8 +116,8 @@ var down=new Array();
  
 state.selectAll("rect")
       .data(function(d) { return d.ages; })
-    .enter().append("rect")
-	.attr("id", function(d){   
+      .enter().append("rect")
+      .attr("id", function(d){   
                 return d.name;       
             })
       .attr("width", x.rangeBand())
@@ -127,28 +127,28 @@ state.selectAll("rect")
     .on("click", function(d) {
     
 
-    if(d.Years==="Freshman"){
-      svg.selectAll("rect")
+        if(d.Years==="Freshman"){
+        svg.selectAll("rect")
           
-		   .transition()
+          .transition()
           .attr("y", function(d) { return y(d.y1); })
-            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-      .style("fill", function(d) { return color(d.Years); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .style("fill", function(d) { return color(d.Years); })
 		}
-		else if(d.Years==="Sophomore"){
-		  svg.selectAll("rect")
-		   .transition()
+        else if(d.Years==="Sophomore"){
+        svg.selectAll("rect")
+          .transition()
           .attr("y", function(d) { return y(d.y1-d.Freshman); })
-            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
       .style("fill", function(d) { return color(d.Years); })
 		
 			}
-		else if(d.Years==="Junior"){
-		  svg.selectAll("rect")
-		   .transition()
+	else if(d.Years==="Junior"){
+	svg.selectAll("rect")
+	  .transition()
           .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore); })
-            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-      .style("fill", function(d) { return color(d.Years); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .style("fill", function(d) { return color(d.Years); })
 		
 			}
 		else if(d.Years==="Senior"){
@@ -169,6 +169,8 @@ state.selectAll("rect")
   legend.append("rect")
       .attr("x", width - 10)
       .attr("y", 10)
+      .attr("width", 17)
+      .attr("height", 10)
       .style("fill", color);
   legend.append("text")
       .attr("x", width - 24)

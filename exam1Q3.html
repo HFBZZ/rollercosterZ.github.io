@@ -46,11 +46,9 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
         var data3 = [];
         var data4 = [];
         var data;
-        var accumeArr = [];// 1=>{ U1=>x,U2=>x,... } 2=>{ U1=>x,U2=>x,... }
+        var accumeArr = [];
         
-    for(k1 in data){ //diff year
-    //if(vv.Year == 'Senior'){
-        // console.log(data[k1]);
+    for(k1 in data){ 
         switch(data[k1].Year)
               {
               case 'Freshman':
@@ -77,9 +75,9 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
                 console.log("err year!"+data[k1].Year);
               }
         
-        for(k2 in data[k1]) { //diff university
+        for(k2 in data[k1]) { 
               if(k2 !== 'Year'){
-                dataset.push( [ k2,data[k1][k2] ] );//put a pair[name,value]
+                dataset.push( [ k2,data[k1][k2] ] );
                 if(k1>0){
                   accumeArr[k1][k2] = accumeArr[k1-1][k2] + data[k1][k2]; 
                 }else{
@@ -150,7 +148,7 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
             .style("fill", colors(3) );
-            // Title
+            
             chart.append("text")
                 .attr("x", (width / 2))
                 .attr("y", 0 - (margin.top / 2))
@@ -158,7 +156,7 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
                 .style("font-size", "16px")
                 .style("text-decoration", "underline")
                 .text("IE students for five universities");
-            // add legend   
+               
             var legend = chart.append("g")
                 .attr("class", "legend")
                 .attr("x", width - 65)
@@ -192,9 +190,9 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
                   var text = d.name;
                   return text;
                 });
-           //on click1
+           
            chart.selectAll(".bar1").on("click", function(){
-              //bar 1
+              
               chart.selectAll(".bar1")
               .transition()
               .duration(function(d,i){
@@ -203,21 +201,21 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .ease("linear")
             .attr("y", function(d) { return height; })
             .style("opacity", 0.8);
-            //bar2
+            
             chart.selectAll(".bar2")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1])-accumeArr[0][d[0]]+newdata1[i][1]; })
             .style("opacity", 1);
-            //bar3
+            
             chart.selectAll(".bar3")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1])-accumeArr[1][d[0]]+newdata1[i][1]; })
             .style("opacity", 1);
-            //bar4
+            
             chart.selectAll(".bar4")
               .transition()
               .duration(500)
@@ -225,9 +223,9 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .attr("y", function(d,i) { return y(d[1])-accumeArr[2][d[0]]+newdata1[i][1]; })
             .style("opacity", 1);
           });
-           //on click2
+           
            chart.selectAll(".bar2").on("click", function(){
-              //bar 2
+              
               chart.selectAll(".bar2")
               .transition()
               .duration(function(d,i){
@@ -236,21 +234,21 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .ease("linear")
             .attr("y", function(d) { return height; })
             .style("opacity", 0.8);
-            //bar1
+            
             chart.selectAll(".bar1")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1]) })
             .style("opacity", 1);
-            //bar3
+            
             chart.selectAll(".bar3")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1])-accumeArr[1][d[0]]+newdata2[i][1]; })
             .style("opacity", 1);
-            //bar4
+            
             chart.selectAll(".bar4")
               .transition()
               .duration(500)
@@ -258,9 +256,9 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .attr("y", function(d,i) { return y(d[1])-accumeArr[2][d[0]]+newdata2[i][1]; })
             .style("opacity", 1);
           });
-           //on click3
+           
            chart.selectAll(".bar3").on("click", function(){
-              //bar 3
+              
               chart.selectAll(".bar3")
               .transition()
               .duration(function(d,i){
@@ -269,21 +267,21 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .ease("linear")
             .attr("y", function(d) { return height; })
             .style("opacity", 0.8);
-            //bar1
+            
             chart.selectAll(".bar1")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1]) })
             .style("opacity", 1);
-            //bar2
+            
             chart.selectAll(".bar2")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1])-accumeArr[0][d[0]]; })
             .style("opacity", 1);
-            //bar4
+            
             chart.selectAll(".bar4")
               .transition()
               .duration(500)
@@ -291,9 +289,9 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .attr("y", function(d,i) { return y(d[1])-accumeArr[2][d[0]]+newdata3[i][1]; })
             .style("opacity", 1);
           });
-           //on click4
+           
            chart.selectAll(".bar4").on("click", function(){
-              //bar 4
+              
               chart.selectAll(".bar4")
               .transition()
               .duration(function(d,i){
@@ -302,21 +300,21 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .ease("linear")
             .attr("y", function(d) { return height; })
             .style("opacity", 0.8);
-            //bar1
+            
             chart.selectAll(".bar1")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1]) })
             .style("opacity", 1);
-            //bar2
+            
             chart.selectAll(".bar2")
               .transition()
               .duration(500)
             .ease("linear")
             .attr("y", function(d,i) { return y(d[1])-accumeArr[0][d[0]]; })
             .style("opacity", 1);
-            //bar3
+            
             chart.selectAll(".bar3")
               .transition()
               .duration(500)
@@ -325,5 +323,5 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
             .style("opacity", 1);
         
           });
-});//end d3.json
+});
 </script>

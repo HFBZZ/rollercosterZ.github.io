@@ -21,9 +21,9 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-var margin = {top: 20, right: 130, bottom: 30, left: 40},
+var margin = {top: 20, right: 130, bottom: 230, left: 40},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 700 - margin.top - margin.bottom;
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 var y = d3.scale.linear()
@@ -41,11 +41,11 @@ var chart = d3.select(".chart")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 colors = d3.scale.category10();
 d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
-        var newdata1 = [];
-        var newdata2 = [];
-        var newdata3 = [];
-        var newdata4 = [];
-        var newdata;
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+        var data4 = [];
+        var data;
         var accumeArr = [];// 1=>{ U1=>x,U2=>x,... } 2=>{ U1=>x,U2=>x,... }
         
     for(k1 in data){ //diff year
@@ -54,22 +54,22 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
         switch(data[k1].Year)
               {
               case 'Freshman':
-                newdata = newdata1;
+                dataset = data1;
                 accumeArr[0] = new Object();
                 accumeArr[0].name = 'Freshman';
                 break;
               case 'Sophomore':
-                newdata = newdata2;
+                dataset = data2;
                 accumeArr[1] = new Object();
                 accumeArr[1].name = 'Sophomore';
                 break;
               case 'Junior':
-                newdata = newdata3;
+                dataset = data3;
                 accumeArr[2] = new Object();
                 accumeArr[2].name = 'Junior';
                 break;
               case 'Senior':
-                newdata = newdata4;
+                dataset = data4;
                 accumeArr[3] = new Object();
                 accumeArr[3].name = 'Senior';
                 break;
@@ -89,13 +89,13 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
         }
       }
         console.log(accumeArr);
-        console.log(newdata1);
-        console.log(newdata2);
-        console.log(newdata3);
-        console.log(newdata4);
+        console.log(data1);
+        console.log(data2);
+        console.log(data3);
+        console.log(data4);
         var maxnum = 0;
-        for(k in newdata1){
-          var curr = newdata1[k][1]+newdata2[k][1]+newdata3[k][1]+newdata4[k][1];
+        for(k in ata1){
+          var curr = data1[k][1]+data2[k][1]+data3[k][1]+data4[k][1];
           if(curr > maxnum){
             maxnum = curr;
           }
@@ -192,6 +192,138 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
                   var text = d.name;
                   return text;
                 });
-           //on click
+           //on click1
+           chart.selectAll(".bar1").on("click", function(){
+              //bar 1
+              chart.selectAll(".bar1")
+              .transition()
+              .duration(function(d,i){
+                  return 500 * (i+1);
+              })
+            .ease("linear")
+            .attr("y", function(d) { return height; })
+            .style("opacity", 0.8);
+            //bar2
+            chart.selectAll(".bar2")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[0][d[0]]+newdata1[i][1]; })
+            .style("opacity", 1);
+            //bar3
+            chart.selectAll(".bar3")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[1][d[0]]+newdata1[i][1]; })
+            .style("opacity", 1);
+            //bar4
+            chart.selectAll(".bar4")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[2][d[0]]+newdata1[i][1]; })
+            .style("opacity", 1);
+          });
+           //on click2
+           chart.selectAll(".bar2").on("click", function(){
+              //bar 2
+              chart.selectAll(".bar2")
+              .transition()
+              .duration(function(d,i){
+                  return 500 * (i+1);
+              })
+            .ease("linear")
+            .attr("y", function(d) { return height; })
+            .style("opacity", 0.8);
+            //bar1
+            chart.selectAll(".bar1")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1]) })
+            .style("opacity", 1);
+            //bar3
+            chart.selectAll(".bar3")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[1][d[0]]+newdata2[i][1]; })
+            .style("opacity", 1);
+            //bar4
+            chart.selectAll(".bar4")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[2][d[0]]+newdata2[i][1]; })
+            .style("opacity", 1);
+          });
+           //on click3
+           chart.selectAll(".bar3").on("click", function(){
+              //bar 3
+              chart.selectAll(".bar3")
+              .transition()
+              .duration(function(d,i){
+                  return 500 * (i+1);
+              })
+            .ease("linear")
+            .attr("y", function(d) { return height; })
+            .style("opacity", 0.8);
+            //bar1
+            chart.selectAll(".bar1")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1]) })
+            .style("opacity", 1);
+            //bar2
+            chart.selectAll(".bar2")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[0][d[0]]; })
+            .style("opacity", 1);
+            //bar4
+            chart.selectAll(".bar4")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[2][d[0]]+newdata3[i][1]; })
+            .style("opacity", 1);
+          });
+           //on click4
+           chart.selectAll(".bar4").on("click", function(){
+              //bar 4
+              chart.selectAll(".bar4")
+              .transition()
+              .duration(function(d,i){
+                  return 500 * (i+1);
+              })
+            .ease("linear")
+            .attr("y", function(d) { return height; })
+            .style("opacity", 0.8);
+            //bar1
+            chart.selectAll(".bar1")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1]) })
+            .style("opacity", 1);
+            //bar2
+            chart.selectAll(".bar2")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[0][d[0]]; })
+            .style("opacity", 1);
+            //bar3
+            chart.selectAll(".bar3")
+              .transition()
+              .duration(500)
+            .ease("linear")
+            .attr("y", function(d,i) { return y(d[1])-accumeArr[1][d[0]]; })
+            .style("opacity", 1);
+        
+          });
 });//end d3.json
 </script>

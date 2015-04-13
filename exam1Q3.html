@@ -167,10 +167,9 @@ state.selectAll("rect")
     .enter().append("g")
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(20," + i * 20 + ")"; });
-  legend.append("circle")
-      .attr("cx", width - 10)
-      .attr("cy",  10)
-      .attr("r", 9)
+  legend.append("rect")
+      .attr("x", width - 10)
+      .attr("y", 0)
       .style("fill", color);
   legend.append("text")
       .attr("x", width - 24)

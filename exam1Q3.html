@@ -1,23 +1,86 @@
 <!DOCTYPE html>
-<html>
 <head>
-  <title>Zixu Exam 1 Question 3</title>
+  <title>Comparison of the Number of Senior Student</title>
   <meta charset="utf-8">
-  <script src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+.axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+#container {
+    position: absolute;
+    text-align: center;
+    width: 90px;
+    height: auto;
+}
+#container.hidden {
+    display: none;
+}
+#container p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#header {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #4E4E4E;
+    font-family: Open Sans;
+}
+
+body {
+    text-align: center;
+}
+
+svg {
+    text-align: center;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+#backbottom {
+    text-decoration: none;
+    font-size: 1em;
+    font-family: Open Sans;
+    margin-top: 100px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
     <div id="header">Comparison of the # of IE Students in Five Univerisities</div>
-
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
+
 var dataset;
             d3.json("https://hivelab.org/static/exam1.json", function(data) {
                   
                   console.log(data);
             
                   dataset2 = data;
-                  
-
 var margin = { top: 10, right: 200, bottom: 10, left: 20 };
 var width = 1000 - margin.left - margin.right ;
 var height = 300 - margin.top - margin.bottom;
@@ -98,20 +161,24 @@ var dataset = [{
 var university = dataset.map(function (d) {
         return d.name;
     });
+
 var dataset = dataset.map(function (d) {
         return d.data.map(function (d, i) {
             // Structure it so that your numeric
             // axis (the stacked amount) is y
             return {
-                y: d.C,
-                x: d.U
+                y: d.people,
+                x: d.University
             };
         });
     });
+
 //Identify stack function
 var stack = d3.layout.stack();
+
     //Stack the data together
     stack(dataset);
+
 var dataset = dataset.map(function (group) {
     return group.map(function (d) {
         // Invert the x and y values, and y0 becomes x0
@@ -133,22 +200,28 @@ var xMax = d3.max(dataset, function (group) {
             return d.x + d.x0;
         });
     });
+
 var xScale = d3.scale.linear()
         .domain([0, xMax])
         .range([0, width]),
     months = dataset[0].map(function (d) {
         return d.y;
     });
+
 var yScale = d3.scale.ordinal()
         .domain(months)
         .rangeRoundBands([0, height], .1);
+
 var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom");
+
 var yAxis = d3.svg.axis()
         .scale(yScale)
         .orient("left");
+
 var colours = d3.scale.category20();
+
 var groups = svg.selectAll("g")
         .data(dataset)
         .enter()
@@ -156,6 +229,7 @@ var groups = svg.selectAll("g")
         .style("fill", function (d, i) {
         return colours(i);
     });
+
 var rects = groups.selectAll("rect")
         .data(function (d) {
         return d;
@@ -179,6 +253,7 @@ var rects = groups.selectAll("rect")
         .attr("class", "axis")
         .attr("transform", "translate(0," + (height - margin.top + 3) + ")")
         .call(xAxis);
+
     svg.append("g")
        .attr("class", "axis")
        .call(yAxis);
@@ -196,6 +271,7 @@ university.forEach(function (d, i) {
         .attr("x", width + margin.left + 55)
         .attr("y", i * 24 + 6);
 });
+
 </script>
 <div id="backbottom"><a href="exam1.html">back to the main page</a></div>
 <div id="container" class="hidden">

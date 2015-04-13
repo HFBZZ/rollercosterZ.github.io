@@ -76,20 +76,21 @@ a:active {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var dataset2;
-    d3.json("https://hivelab.org/static/exam1.json", function(data) {
-     console.log(data);
-     dataset1 = data[1];
-     dataset2 = data[2];
-     dataset3 = data[3];
-     dataset4 = data[4];
-    });
+
                  
 var margin = { top: 10, right: 200, bottom: 10, left: 20 };
 var width = 1000 - margin.left - margin.right ;
 var height = 300 - margin.top - margin.bottom;
-var dataset = [{
-        data: [{
+var dataset;
+    d3.json("https://hivelab.org/static/exam1.json", function(data) {
+     console.log(data);
+     dataset1 = data[0];
+     dataset2 = data[1];
+     dataset3 = data[2];
+     dataset4 = data[3];
+    });
+  dataset = [{
+     data: [{
             U: "University A",
             C: dataset1["University A"]
         }, {
@@ -161,7 +162,7 @@ var dataset = [{
         }],
         name: dataset2[4].Year
     }
-    ];
+    ];       
 var university = dataset.map(function (d) {
         return d.name;
     });

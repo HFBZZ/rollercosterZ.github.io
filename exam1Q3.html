@@ -79,7 +79,7 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
         
         for(k2 in data[k1]) { //diff university
               if(k2 !== 'Year'){
-                newdata.push( [ k2,data[k1][k2] ] );//put a pair[name,value]
+                dataset.push( [ k2,data[k1][k2] ] );//put a pair[name,value]
                 if(k1>0){
                   accumeArr[k1][k2] = accumeArr[k1-1][k2] + data[k1][k2]; 
                 }else{

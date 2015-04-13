@@ -85,7 +85,102 @@ var YEAR=[];
     d.total = d.grade[d.grade.length - 1].y1;
   });
   
-  x.domain(data.map(function(d) { return d.name; }));
+x.domain(data.map(function(d) { return d.name; }));
    
-  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+y.domain([0, d3.max(data, function(d) { return d.total; })]);
   
+svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".75em")
+      .style("text-anchor", "end")
+      .text("Number of Students");
+  var state = svg.selectAll(".name")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x(d.name) + ",0)"; });
+var down=new Array();
+ 
+state.selectAll("rect")
+      .data(function(d) { return d.grade; })
+      .enter().append("rect")
+      .attr("id", function(d){   
+                return d.name;       
+            })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.y1); })
+      .attr("height", function(d) {  return y(d.y0) - y(d.y1);})
+      .style("fill", function(d) { return color(d.Years); })
+    .on("click", function(d) {
+      
+  if(d.Years==="Freshman"){
+        svg.selectAll("rect")
+          
+          .transition()
+          .attr("y", function(d) { return y(d.y1); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .style("fill", function(d) { return color(d.Years); })
+    }
+    
+  else if(d.Years==="Sophomore"){
+        svg.selectAll("rect")
+          .transition()
+          .attr("y", function(d) { return y(d.y1-d.Freshman); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.Years); })
+      }
+      
+  else if(d.Years==="Junior"){
+  svg.selectAll("rect")
+    .transition()
+          .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore); })
+          .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+          .style("fill", function(d) { return color(d.Years); })
+      }
+      
+    else if(d.Years==="Senior"){
+      svg.selectAll("rect")
+       .transition()
+          .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore-d.Junior); })
+            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.Years); })
+      }});
+      
+      
+  var legend = svg.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(20," + i * 20 + ")"; });
+  legend.append("rect")
+      .attr("x", 900)
+      .attr("y", 3)
+      .attr("width", 25)
+      .attr("height", 12)
+      .style("fill", color);
+  legend.append("text")
+      .attr("x",890)
+      .attr("y", 10)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+    
+     svg.append("text")
+            .attr("x", (width / 2))
+            .attr("y",-10)
+            .attr("text-anchor", "middle")
+            .style("font-size", "16px");
+        
+      
+      
+});
+</script>
+</html>

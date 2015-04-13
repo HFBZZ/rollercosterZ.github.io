@@ -19,18 +19,27 @@ body {
   shape-rendering: crispEdges;
 }
 </style>
-
 <body>
-<p>Click on bars to explore!!</p>
+
+
+
+
+<p>Click each section of bars to see numbers. <br><br><br>Users can see the total numbers of each grade of IE students between five Univ.</p>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+
+
+
 <script>
-var width = 930,
+var margin = {top: 30, right: 20, bottom: 30, left: 40},
+    width = 930,
     height = 620;
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width-40], .1);
 var y = d3.scale.linear()
     .rangeRound([height, 0]);
-var color = d3.scale.linear()
+var color = d3.scale.ordinal()
     .range(["#246B24", "#99CC00", "#D6AD33", "#FF9933"]);
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -62,15 +71,10 @@ d3.json("https://hivelab.org/static/exam1.json", function(data) {
 					});
 					
 				var YEAR=[];
-
 				for(i=0;i<Univ.length;i++){
-
 				YEAR[i]=Univ[i].Year;
 				}
-
-
 				for(j=0;j< YEAR.length;j++){
-
 				  for(i=0;i< UnivObj.length;i++){
 					UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
 				}}
@@ -117,7 +121,6 @@ state.selectAll("rect")
       .style("fill", function(d) { return color(d.Years); })
     .on("click", function(d) {
     
-
         if(d.Years==="Freshman"){
         svg.selectAll("rect")
           

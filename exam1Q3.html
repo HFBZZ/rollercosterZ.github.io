@@ -99,7 +99,7 @@ d3.json("https://hivelab.org/static/exam1.json", function(error, data) {
           }
         }
         console.log(maxnum);
-        x.domain(newdata.map(function(d) { return d[0]; }));
+        x.domain(data.map(function(d) { return d[0]; }));
         y.domain([0, maxnum ]);
         chart.append("g")
             .attr("class", "x axis")

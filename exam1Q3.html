@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<h1>The Compariosn of IE Students Numbers between Five Univ.</h1>
 <style>
-.bar {
-  fill: steelblue;
-}
-.axis text {
-  font: 10px sans-serif;
+body {
+  font: 15px sans-serif;
 }
 .axis path,
 .axis line {
@@ -13,315 +11,180 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.bar {
+  fill: blue;
+}
 .x.axis path {
-  display: none;
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
 </style>
-<svg class="chart"></svg>
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<body>
+
+
+
+
+<p>Click each section of bars to see numbers. <br><br><br>Users can see the total numbers of each grade of IE students between five Univ.</p>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+
+
+
 <script>
-var margin = {top: 40, right: 150, bottom: 330, left: 50},
-    width =1000 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+var margin = {top: 30, right: 20, bottom: 30, left: 40},
+    width = 930,
+    height = 620;
 var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
+    .rangeRoundBands([0, width-40], .1);
 var y = d3.scale.linear()
-    .range([height, 0]);
+    .rangeRound([height, 0]);
+var color = d3.scale.ordinal()
+    .range(["#6d88d9", "#6db1d9", "#6dd4db", "#6df3dd"]);
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
 var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left");
-var chart = d3.select(".chart")
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    .attr("height", 2*(height + margin.top + margin.bottom))
+    .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-colors = d3.scale.category10();
-d3.json("https://hivelab.org/static/exam1.json", function( data) {
-        var dataset1 = [];
-        var dataset2 = [];
-        var dataset3 = [];
-        var dataset4 = [];
-        var data;
-        var newarray = [];
+	
+d3.json("https://hivelab.org/static/exam1.json", function(data) {
+   				Univ = data;
+				 UnivName=Object.keys(Univ[0]).filter(
+					function(d) {
+					return (d !== "Year");
+					})
+				UnivObj = Object.keys(Univ[0]).filter(
+				function(d) {
+				return (d !== "Year");
+					}
+					).map(
+					function(d) {
+						return {
+						"name": d
+						}
+					});
+					
+				var YearName=[];
+				for(i=0;i<Univ.length;i++){
+				YearName[i]=Univ[i].Year;
+				}
+				for(j=0;j< YearName.length;j++){
+				  for(i=0;i< UnivObj.length;i++){
+					UnivObj[i][ YearName[j]]=Univ[j][UnivName[i]];
+				}}
+			data= UnivObj;
+	console.log(data);
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "name"; }));
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(Years) { 
+	return {
+    Years: Years, name: d.name, Freshman: d.Freshman, Sophomore: d.Sophomore, Junior: d.Junior,Senior: d.Senior, y0: y0, y1: y0 += +d[Years]
+  }; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+  x.domain(data.map(function(d) { return d.name; 
+  }));
+   
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".75em")
+      .style("text-anchor", "end")
+      .text("Number of Students");
+  var state = svg.selectAll(".name")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x(d.name) + ",0)"; });
+var down=new Array();
+ 
+state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+	.attr("id", function(d){   
+                return d.name;       
+            })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.y1); })
+      .attr("height", function(d) {  return y(d.y0) - y(d.y1);})
+      .style("fill", function(d) { return color(d.Years); })
+    .on("click", function(d) {
+        if(d.Years==="Freshman"){
+svg.selectAll("rect")
+          
+		   .transition()
+          .attr("y", function(d) { return y(d.y1); })
+            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.Years); })
+		}
+		else if(d.Years==="Sophomore"){
+		svg.selectAll("rect")
+		   .transition()
+          .attr("y", function(d) { return y(d.y1-d.Freshman); })
+            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.Years); })
+		
+			}
+		else if(d.Years==="Junior"){
+		svg.selectAll("rect")
+		   .transition()
+          .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore); })
+            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.Years); })
+		
+			}
+		else if(d.Years==="Senior"){
+		svg.selectAll("rect")
+		   .transition()
+          .attr("y", function(d) { return y(d.y1-d.Freshman-d.Sophomore-d.Junior); })
+            .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.Years); })
+		
+			}	
+			
+    });
+  var legend = svg.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(20," + i * 20 + ")"; });
+  legend.append("circle")
+      .attr("cx", width - 10)
+      .attr("cy",  10)
+      .attr("r", 9)
+      .style("fill", color);
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+	  
+	   svg.append("text")
+            .attr("x", (width / 2))
+            .attr("y",-10)
+            .attr("text-anchor", "middle")
+            .style("font-size", "16px");
         
-    for(i in data){ 
-        switch(data[i].Year)
-              {
-              case 'Freshman':
-                dataset = dataset1;
-                newarray[0] = new Object();
-                newarray[0].name = 'Freshman';
-                break;
-              case 'Sophomore':
-                dataset = dataset2;
-                newarray[1] = new Object();
-                newarray[1].name = 'Sophomore';
-                break;
-              case 'Junior':
-                dataset = dataset3;
-                newarray[2] = new Object();
-                newarray[2].name = 'Junior';
-                break;
-              case 'Senior':
-                dataset = dataset4;
-                newarray[3] = new Object();
-                newarray[3].name = 'Senior';
-                break;
-              default:
-                console.log("err year!"+data[k1].Year);
-              }
-        
-        for(j in data[i]) { 
-              if(j !== 'Year'){
-                dataset.push( [ j,data[i][j] ] );
-                if(i>0){
-                  newarray[i][j] = newarray[i-1][j] + data[i][j]; 
-                }else{
-                  newarray[i][j] = data[i][j]; 
-                }
-              }
-        }
-      }
-        console.log(newarray);
-        console.log(dataset1);
-        console.log(dataset2);
-        console.log(dataset3);
-        console.log(dataset4);
-        var maxnum = 0;
-        for(k in dataset1){
-          var curr = dataset1[k][1]+dataset2[k][1]+dataset3[k][1]+dataset4[k][1];
-          if(curr > maxnum){
-            maxnum = curr;
-          }
-        }
-        console.log(maxnum);
-        x.domain(data.map(function(d) { return d[0]; }));
-        y.domain([0, maxnum ]);
-        chart.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
-        chart.append("g")
-            .attr("class", "y axis")
-            .call(yAxis);
-            //1
-        chart.selectAll(".bar1")
-            .data(dataset1)
-          .enter().append("rect")
-            .attr("class", "bar1")
-            .attr("x", function(d) { return x(d[0]); })
-            .attr("y", function(d) { return y(d[1]); })
-            .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", x.rangeBand())
-            .style("fill", colors(0) );
-            //2
-            chart.selectAll(".bar2")
-            .data(dataset2)
-          .enter().append("rect")
-            .attr("class", "bar2")
-            .attr("x", function(d) { return x(d[0]); })
-            .attr("y", function(d) { return y(d[1])-newarray[0][d[0]]; })
-            .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", x.rangeBand())
-            .style("fill", colors(0) );
-            //3
-            chart.selectAll(".bar3")
-            .data(dataset3)
-          .enter().append("rect")
-            .attr("class", "bar3")
-            .attr("x", function(d) { return x(d[0]); })
-            .attr("y", function(d) { return y(d[1])-newarray[1][d[0]]; })
-            .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", x.rangeBand())
-            .style("fill", colors(2));
-             //4
-            chart.selectAll(".bar4")
-            .data(dataset4)
-          .enter().append("rect")
-            .attr("class", "bar4")
-            .attr("x", function(d) { return x(d[0]); })
-            .attr("y", function(d) { return y(d[1])-newarray[2][d[0]]; })
-            .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", x.rangeBand())
-            .style("fill", colors(3) );
-            
-            chart.append("text")
-                .attr("x", (width / 2))
-                .attr("y", 0 - (margin.top / 2))
-                .attr("text-anchor", "middle")
-                .style("font-size", "16px")
-                .style("text-decoration", "underline")
-                .text("Interactive Bar Chart for IE students for five universities");
-               
-            var legend = chart.append("g")
-                .attr("class", "legend")
-                .attr("x", width - 65)
-                .attr("y", 50)
-                .attr("height", 100)
-                .attr("width", 200)
-                .attr('transform', 'translate(60,50)');
-            legend.selectAll('rect')
-                .data(newarray)
-                .enter()
-                .append("rect")
-                .attr("x", width - 65)
-                .attr("y", function(d, i) {
-                  return i * 20;
-                })
-                .attr("width", 25)
-                .attr("height", 10)
-                .style("fill", function(d,i) {
-                  var color = colors(i);
-                  return color;
-                });
-            legend.selectAll('text')
-                .data(newarray)
-                .enter()
-                .append("text")
-                .attr("x", width - 22)
-                .attr("y", function(d, i) {
-                  return i * 20 + 9;
-                })
-                .text(function(d) {
-                  var text = d.name;
-                  return text;
-                });
-           
-           chart.selectAll(".bar1").on("click", function(){
-              
-              chart.selectAll(".bar1")
-              .transition()
-              .duration(function(d,i){
-                  return 100 * (i+1);
-              })
-            .ease("linear")
-            .attr("y", function(d) { return height; })
-            .style("opacity", 0.8);
-            
-            chart.selectAll(".bar2")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[0][d[0]]+dataset1[i][1]; })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar3")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[1][d[0]]+dataset1[i][1]; })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar4")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[2][d[0]]+dataset1[i][1]; })
-            .style("opacity", 1);
-          });
-           
-           chart.selectAll(".bar2").on("click", function(){
-              
-              chart.selectAll(".bar2")
-              .transition()
-              .duration(function(d,i){
-                  return 100 * (i+1);
-              })
-            .ease("linear")
-            .attr("y", function(d) { return height; })
-            .style("opacity", 0.8);
-            
-            chart.selectAll(".bar1")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1]) })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar3")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[1][d[0]]+dataset2[i][1]; })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar4")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[2][d[0]]+dataset2[i][1]; })
-            .style("opacity", 1);
-          });
-           
-           chart.selectAll(".bar3").on("click", function(){
-              
-              chart.selectAll(".bar3")
-              .transition()
-              .duration(function(d,i){
-                  return 100 * (i+1);
-              })
-            .ease("linear")
-            .attr("y", function(d) { return height; })
-            .style("opacity", 0.8);
-            
-            chart.selectAll(".bar1")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1]) })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar2")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[0][d[0]]; })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar4")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[2][d[0]]+dataset3[i][1]; })
-            .style("opacity", 1);
-          });
-           
-           chart.selectAll(".bar4").on("click", function(){
-              
-              chart.selectAll(".bar4")
-              .transition()
-              .duration(function(d,i){
-                  return 100 * (i+1);
-              })
-            .ease("linear")
-            .attr("y", function(d) { return height; })
-            .style("opacity", 0.8);
-            
-            chart.selectAll(".bar1")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1]) })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar2")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[0][d[0]]; })
-            .style("opacity", 1);
-            
-            chart.selectAll(".bar3")
-              .transition()
-              .duration(100)
-            .ease("linear")
-            .attr("y", function(d,i) { return y(d[1])-newarray[1][d[0]]; })
-            .style("opacity", 1);
-        
-          });
+			
+			
 });
 </script>
+</html>

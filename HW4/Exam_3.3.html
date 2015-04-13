@@ -47,30 +47,30 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + 40 +"," + 30 + ")");
 	
 d3.json("https://hivelab.org/static/exam1.json", function(data) {
-   				Univ = data;
-				 UNIV=Object.keys(Univ[0]).filter(
-					function(d) {
-					return (d !== "Year");
-					})
-				UnivObj = Object.keys(Univ[0]).filter(
-				function(d) {
-				return (d !== "Year");
-					}
-					)
+   	Univ = data;
+	UNIV=Object.keys(Univ[0]).filter(
+	function(d) {
+	return (d !== "Year");
+	})
+	UnivObj = Object.keys(Univ[0]).filter(
+	function(d) {
+	return (d !== "Year");
+	}
+	)
         .map(
-					function(d) {
-						return {"name": d}
-					});
+        function(d) {
+	return {"name": d}
+	});
 					
-				var YEAR=[];
-				for(i=0;i<Univ.length;i++){
-				YEAR[i]=Univ[i].Year;
-				}
-				for(j=0;j< YEAR.length;j++){
-				  for(i=0;i< UnivObj.length;i++){
-					UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
-				}}
-			data= UnivObj;
+	var YEAR=[];
+	for(i=0;i<Univ.length;i++){
+	YEAR[i]=Univ[i].Year;
+	}
+	for(j=0;j< YEAR.length;j++){
+        for(i=0;i< UnivObj.length;i++){
+	UnivObj[i][YEAR[j]]=Univ[j][UNIV[i]];
+	}}
+	data= UnivObj;
 	console.log(data);
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "name"; }));
   data.forEach(function(d) {

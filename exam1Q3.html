@@ -117,7 +117,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("y", function(d) { return y(d[1]); })
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
-            .style("fill", pink );
+            .style("fill", colors(0) );
             //2
             chart.selectAll(".bar2")
             .data(dataset2)
@@ -127,7 +127,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("y", function(d) { return y(d[1])-newarray[0][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
-            .style("fill", red );
+            .style("fill", colors(0) );
             //3
             chart.selectAll(".bar3")
             .data(dataset3)
@@ -137,7 +137,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("y", function(d) { return y(d[1])-newarray[1][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
-            .style("fill", colors(6));
+            .style("fill", colors(2));
              //4
             chart.selectAll(".bar4")
             .data(dataset4)
@@ -147,7 +147,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("y", function(d) { return y(d[1])-newarray[2][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
             .attr("width", x.rangeBand())
-            .style("fill", colors(8) );
+            .style("fill", colors(3) );
             
             chart.append("text")
                 .attr("x", (width / 2))

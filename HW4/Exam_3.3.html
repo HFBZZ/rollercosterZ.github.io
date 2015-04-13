@@ -20,3 +20,26 @@ body {
 }
 </style>
 <body>
+<p>Click on bars to explore!!</p>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var width = 930,
+    height = 620;
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width-40], .1);
+var y = d3.scale.linear()
+    .rangeRound([height, 0]);
+var color = d3.scale.linear()
+    .range(["#246B24", "#99CC00", "#D6AD33", "#FF9933"]);
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+var svg = d3.select("body").append("svg")
+    .attr("width", width + 60)
+    .attr("height", 2*(height + 60))
+    .append("g")
+    .attr("transform", "translate(" + 40 +"," + 30 + ")");

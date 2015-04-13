@@ -80,7 +80,7 @@ var YEAR=[];
     var y0 = 0;
     d.ages = color.domain().map(function(Years) { 
   return {
-    Years: Years, name: d.name, Freshman: d.Freshman, Sophomore: d.Sophomore, Junior: d.Junior,Senior: d.Senior, y0: y0, y1: y0 + =+d[Years]
+    Years: Years, name: d.name, Freshman: d.Freshman, Sophomore: d.Sophomore, Junior: d.Junior,Senior: d.Senior, y0: y0, y1: y0 += +d[Years]
   }; });
     d.total = d.ages[d.ages.length - 1].y1;
   });

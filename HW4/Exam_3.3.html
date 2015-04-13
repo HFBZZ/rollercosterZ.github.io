@@ -39,7 +39,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .tickFormat(d3.format(".2s"));
+    .tickFormat(d3.format(".5s"));
 var svg = d3.select("body").append("svg")
     .attr("width", width + 60)
     .attr("height", 2*(height + 60))
@@ -86,14 +86,13 @@ d3.json("https://hivelab.org/static/exam1.json", function(data) {
    
   y.domain([0, d3.max(data, function(d) { return d.total; })]);
   svg.append("g")
-      .attr("class", "y axis")
+      .attr("class","axis")
       .call(yAxis)
     .append("text")
-      .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".75em")
       .style("text-anchor", "end")
-      .text("Number of Students");
+      .text("# of Students");
   var state = svg.selectAll(".name")
       .data(data)
     .enter().append("g")

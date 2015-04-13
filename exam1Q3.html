@@ -84,7 +84,7 @@ var height = 300 - margin.top - margin.bottom;
 var dataset;
     d3.json("https://hivelab.org/static/exam1.json", function(data) {
      console.log(data);
-    });
+    
   dataset = [{
      data: [{
             U: "University A",
@@ -158,7 +158,8 @@ var dataset;
         }],
         name: dataset2[4].Year
     }
-    ];       
+    ];  
+    });
 var university = dataset.map(function (d) {
         return d.name;
     });

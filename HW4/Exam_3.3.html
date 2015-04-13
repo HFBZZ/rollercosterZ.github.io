@@ -153,13 +153,13 @@ else if(d.Years==="Senior"){
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(20," + i * 20 + ")"; });
   legend.append("rect")
-      .attr("x", 900)
+      .attr("x", width-15)
       .attr("y", 3)
       .attr("width", 25)
       .attr("height", 12)
       .style("fill", color);
   legend.append("text")
-      .attr("x",890)
+      .attr("x",width-40)
       .attr("y", 10)
       .attr("dy", ".35em")
       .style("text-anchor", "end")

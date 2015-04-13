@@ -116,7 +116,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("x", function(d) { return x(d[0]); })
             .attr("y", function(d) { return y(d[1]); })
             .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", 60)
+            .attr("width", x.rangeBand())
             .style("fill", colors(0) );
             //2
             chart.selectAll(".bar2")
@@ -126,7 +126,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("x", function(d) { return x(d[0]); })
             .attr("y", function(d) { return y(d[1])-newarray[0][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", 60)
+            .attr("width", x.rangeBand())
             .style("fill", colors(1) );
             //3
             chart.selectAll(".bar3")
@@ -136,7 +136,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("x", function(d) { return x(d[0]); })
             .attr("y", function(d) { return y(d[1])-newarray[1][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", 60)
+            .attr("width", x.rangeBand())
             .style("fill", colors(2));
              //4
             chart.selectAll(".bar4")
@@ -146,7 +146,7 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
             .attr("x", function(d) { return x(d[0]); })
             .attr("y", function(d) { return y(d[1])-newarray[2][d[0]]; })
             .attr("height", function(d) { return height - y(d[1]); })
-            .attr("width", 60)
+            .attr("width", x.rangeBand())
             .style("fill", colors(3) );
             
             chart.append("text")
@@ -175,14 +175,14 @@ d3.json("https://hivelab.org/static/exam1.json", function( data) {
                 .attr("width", 25)
                 .attr("height", 10)
                 .style("fill", function(d,i) {
-                  var color = colors(i+20);
+                  var color = colors(i+40);
                   return color;
                 });
             legend.selectAll('text')
                 .data(newarray)
                 .enter()
                 .append("text")
-                .attr("x", width - 52)
+                .attr("x", width - 22)
                 .attr("y", function(d, i) {
                   return i * 20 + 9;
                 })

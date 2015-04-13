@@ -81,6 +81,19 @@ d3.json("https://hivelab.org/static/exam1.json", function(data) {
   }; });
     d.total = d.ages[d.ages.length - 1].y1;
   });
+  x.domain(data.map(function(d) { return d.name; 
+  }));
+   
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+  svg.append("g")
+      .attr("class","y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("y", 0)
+      .attr("x", 105)
+      .attr("dy", ".75em")
+      .style("text-anchor", "end")
+      .text("# of Students");
   
   var state = svg.selectAll(".name")
       .data(data)
@@ -152,19 +165,7 @@ else if(d.Years==="Senior"){
       .attr("dy", ".35em")
       .style("text-anchor", "end")
       .text(function(d) { return d; });
-      x.domain(data.map(function(d) { return d.name; 
-  }));
-   
-  y.domain([0, d3.max(data, function(d) { return d.total; })]);
-  svg.append("g")
-      .attr("class","y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("y", 0)
-      .attr("x", 105)
-      .attr("dy", ".75em")
-      .style("text-anchor", "end")
-      .text("# of Students");
+      
       
 svg.append("g")
       .attr("class", "x axis")

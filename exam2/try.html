@@ -63,10 +63,8 @@ var format = d3.time.format("%a %b %d %Y");
 // a global
 var jsonData = [];
 d3.json("https://hivelab.org/static/exam2.json", function(json) {
-  console.log(json);
   jsonData = json;
 });
-
 
 refreshTable();
 

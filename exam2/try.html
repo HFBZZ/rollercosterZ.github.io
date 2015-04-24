@@ -13,23 +13,23 @@ svg {
 }
 
 .header rect{
-  fill: #0099FF;
+  fill: #ADADAD;
 }
 
 .header text{
-  fill: white;
+  fill: black;
   font: 10px sans-serif;
-  text-anchor: middle;
+  text-anchor: right;
 }
 
 .cell rect{
-  fill: #66FFFF;
+  fill: #FFFFFF;
 }
 
 .cell text{
   fill: black;
   font: 10px sans-serif;
-  text-anchor: middle;
+  text-anchor: right;
 }
 </style>
 </head>
@@ -94,7 +94,8 @@ function refreshTable(sortOn){
 	
 	header.append("rect")
 		.attr("width", fieldWidth-1)
-		.attr("height", fieldHeight);
+		.attr("height", fieldHeight)
+		.on("mouseover",);
 		
 	header.append("text")
 		.attr("x", fieldWidth / 2)

@@ -76,7 +76,7 @@ function refreshTable(sortOn){
 
 	// create the table header	
 	var header = headerGrp.selectAll("g")
-		.data(d3.keys(jsonData[1]))
+		.data(d3.keys(jsonData1[1]))
 	  .enter().append("g")
 		.attr("class", "header")
 		.attr("transform", function (d, i){
@@ -96,7 +96,7 @@ function refreshTable(sortOn){
 	
 	// fill the table	
 	// select rows
-	var rows = rowsGrp.selectAll("g.row").data(jsonData).on("mouseover",function(d,i){
+	var rows = rowsGrp.selectAll("g.row").data(jsonData1).on("mouseover",function(d,i){
                         d3.select(this)
                               .style({"fill":"orange"});});
 	

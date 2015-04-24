@@ -64,7 +64,7 @@ var format = d3.time.format("%a %b %d %Y");
 var jsondata = [];
 d3.json("https://hivelab.org/static/exam2.json", function(json) {
   console.log(json);
-  jsondata = json;
+  jsondata = json[0];
 });
 
 

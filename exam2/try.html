@@ -77,10 +77,10 @@ var jsonData = [{"ItemNo":"item01","A":85,"B":50,"C":16,"D":23,"E":61,"F":73,"G"
 {"ItemNo":"item15","A":74,"B":64,"C":56,"D":34,"E":98,"F":56,"G":24}]
 ; // a global
 
-//d3.json("https://hivelab.org/static/exam2.json", function(error, json) {
- // if (error) return console.warn(error);
-  //jsonData = json;
-//});
+d3.json("https://hivelab.org/static/exam2.json", function(error, json) {
+  if (error) return console.warn(error);
+  jsonData1 = json;
+});
 
 refreshTable();
 

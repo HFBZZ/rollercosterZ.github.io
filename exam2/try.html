@@ -61,20 +61,20 @@ var format = d3.time.format("%a %b %d %Y");
 //var dateFn = function(date) { return format.parse(d.created_at) };
 
 // a global
-
+var jsondata = [];
+d3.json("https://hivelab.org/static/exam2.json", function(json) {
+  console.log(json);
+  jsondata = json;
+});
 
 
 refreshTable();
 
 function refreshTable(sortOn){
-        var jsonData1;
-d3.json("https://hivelab.org/static/exam2.json", function(error, json) {
-  if (error) return console.warn(error);
-  jsonData1 = json;
-});
+
 	// create the table header	
 	var header = headerGrp.selectAll("g")
-		.data(d3.keys(jsonData1[1]))
+		.data(d3.keys(jsondata[1]))
 	  .enter().append("g")
 		.attr("class", "header")
 		.attr("transform", function (d, i){
@@ -94,7 +94,7 @@ d3.json("https://hivelab.org/static/exam2.json", function(error, json) {
 	
 	// fill the table	
 	// select rows
-	var rows = rowsGrp.selectAll("g.row").data(jsonData1).on("mouseover",function(d,i){
+	var rows = rowsGrp.selectAll("g.row").data(jsondata).on("mouseover",function(d,i){
                         d3.select(this)
                               .style({"fill":"orange"});});
 	

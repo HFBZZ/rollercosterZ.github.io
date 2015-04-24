@@ -61,19 +61,17 @@ var format = d3.time.format("%a %b %d %Y");
 //var dateFn = function(date) { return format.parse(d.created_at) };
 
 // a global
-var jsonData1;
-d3.json("https://hivelab.org/static/exam2.json", function(error, json) {
-  if (error) return console.warn(error);
-  jsonData1 = json;
-});
 
-var jsonData;
-jsonData = jsonData1;
+
 
 refreshTable();
 
 function refreshTable(sortOn){
-
+        var jsonData1;
+d3.json("https://hivelab.org/static/exam2.json", function(error, json) {
+  if (error) return console.warn(error);
+  jsonData1 = json;
+});
 	// create the table header	
 	var header = headerGrp.selectAll("g")
 		.data(d3.keys(jsonData1[1]))

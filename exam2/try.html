@@ -137,13 +137,19 @@ function refreshTable(sortOn){
 		
 	cellsEnter.append("rect")
 		.attr("width", fieldWidth-1)
-		.attr("height", fieldHeight);	
+		.attr("height", fieldHeight)
+		.on("mouseover",function(d,i){
+                        d3.select(this)
+                              .style({"background":"orange"});});	
 		
 	cellsEnter.append("text")
 		.attr("x", fieldWidth / 2)
 		.attr("y", fieldHeight / 2)
 		.attr("dy", ".35em")
-		.text(String);
+		.text(String)
+		.on("mouseover",function(d,i){
+                        d3.select(this)
+                              .style({"background":"orange"});});
 	
 	//update if not in initialisation
 	if(sortOn !== null) {

@@ -34,9 +34,7 @@ svg {
 </style>
 </head>
 <body>
-	<svg class="canvas"></svg>
-<p>I re-did the subquestion 3 for problem 3 in Exam 1 and below is the link to the interactive bar chart page:</p>
-<p><a href = "http://rollercosterz.github.io/HW4/Exam_3.3.html/">Exam 1 Problem 3.3</a></p>
+<svg class="canvas"></svg>
 <script>
 var margin = {top: 20, right: 30, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
@@ -59,13 +57,9 @@ var format = d3.time.format("%a %b %d %Y");
 //var dateFn = function(date) { return format.parse(d.created_at) };
 
 
-var jsonData = [
-{ "id": 3, "name": "Richy", "male": true, "born": "Sun May 05 2013", "amount": 12000},
-{ "id": 1, "name": "Susi", "male": false, "born": "Mon May 13 2013", "amount": 2000},
-{ "id": 2, "name": "Patrick", "male": true, "born": "Thu Jun 06 2013", "amount": 17000},
-{ "id": 4, "name": "Lorenz", "male": true, "born": "Thu May 09 2013", "amount": 15000},
-{ "id": 5, "name": "Christina", "male": false, "born": "Mon Jul 01 2013", "amount": 16000}
-];
+var jsonData = d3.json("https://hivelab.org/static/exam1.json", function(data) {
+                  
+                  console.log(data);}
 
 refreshTable(null);
 
@@ -162,11 +156,6 @@ function sort(a,b){
 		return b ? 1 : a ? -1 : 0;
 	}
 }
-	</script>
-
-	
-<p>Senior IE Students Number Among Universities</p>	
-		
-		
-	
-</body></html>
+</script>
+</body>
+</html>

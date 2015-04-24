@@ -71,7 +71,7 @@ function refreshTable(sortOn){
 
 	// create the table header	
 	var header = headerGrp.selectAll("g")
-		.data(d3.keys(jsonData[0]))
+		.data(d3.keys(jsonData[1]))
 	  .enter().append("g")
 		.attr("class", "header")
 		.attr("transform", function (d, i){

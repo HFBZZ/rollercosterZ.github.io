@@ -59,11 +59,11 @@ var fieldWidth = 90;
 var previousSort = null;
 var format = d3.time.format("%a %b %d %Y");
 //var dateFn = function(date) { return format.parse(d.created_at) };
-var Data;
-d3.json("https://hivelab.org/static/exam2.json", function(json) {
-  console.log(json);
-  Data = json;
-});
+//var Data;
+//d3.json("https://hivelab.org/static/exam2.json", function(json) {
+  //console.log(json);
+  //Data = json;
+//});
 // a global
 var jsonData = [{"ItemNo":"item01","A":85,"B":50,"C":16,"D":23,"E":61,"F":73,"G":94},
 {"ItemNo":"item02","A":21,"B":59,"C":41,"D":83,"E":41,"F":50,"G":68},
@@ -82,14 +82,14 @@ var jsonData = [{"ItemNo":"item01","A":85,"B":50,"C":16,"D":23,"E":61,"F":73,"G"
 {"ItemNo":"item15","A":74,"B":64,"C":56,"D":34,"E":98,"F":56,"G":24}]
 ;
 
-jsonData= Data;
-refreshTable();
+
+refreshTable(null);
 
 function refreshTable(sortOn){
 
 	// create the table header	
 	var header = headerGrp.selectAll("g")
-		.data(["ItemNo", "A", "B", "C", "D", "E", "F", "G"])
+		.data(d3.keys(jsonData[0]))
 	  .enter().append("g")
 		.attr("class", "header")
 		.attr("transform", function (d, i){

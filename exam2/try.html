@@ -72,9 +72,7 @@ function refreshTable(sortOn){
 			return "translate(" + i * fieldWidth + ",0)";
 		})
 		.on("click", function(d){ return refreshTable(d);})
-		.on("mouseover",function(){
-                        d3.select(this)
-                              .attr("fill","orange");});
+		;
 	
 	header.append("rect")
 		.attr("width", fieldWidth-1)
@@ -88,9 +86,7 @@ function refreshTable(sortOn){
 	
 	// fill the table	
 	// select rows
-	var rows = rowsGrp.selectAll("g.row").data(jsonData).on("mouseover",function(d,i){
-                        d3.select(this)
-                              .attr("fill","orange");});
+	var rows = rowsGrp.selectAll("g.row").data(jsonData);
 	
 	// create rows	
 	var rowsEnter = rows.enter().append("svg:g")

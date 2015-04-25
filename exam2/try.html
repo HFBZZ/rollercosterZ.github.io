@@ -129,7 +129,12 @@ function refreshTable(sortOn){
                         .on("mouseout", function(d) {
                         d3.select(this)
                               .attr("fill", "rgb(0, 0, 0)");
-                             });
+                             })
+                             .on("click",function(d){
+                             	d3.select(this)
+                             	.attr("fill","green");
+                             })
+                             ;
 
 	// select cells
 	var cells = rows.selectAll("g.cell").data(function(d){return d3.values(d);});

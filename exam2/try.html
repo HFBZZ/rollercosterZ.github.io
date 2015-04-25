@@ -100,7 +100,7 @@ function refreshTable(sortOn){
 			return "translate(" + i * fieldWidth + ",0)";
 		})
 		.on("click", function(d){ return refreshTable(d);})
-		.on("mouseover",function(d,i){
+		.on("mouseover",function(){
                         d3.select(this)
                               .attr("fill","orange");});
 	

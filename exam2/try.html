@@ -122,8 +122,8 @@ function refreshTable(sortOn){
                         
                         .on("mouseout", function(d) {
                         d3.select(this)
-                              .attr("fill", "white")");
-                              });
+                              .attr("fill", "rgb(0, 0, 0)");
+                             });
 
 	// select cells
 	var cells = rows.selectAll("g.cell").data(function(d){return d3.values(d);});

@@ -95,7 +95,12 @@ function refreshTable(sortOn){
 			return "translate(0," + (i+1) * (fieldHeight+1) + ")"})
 			.on("mouseover",function(d,i){
                         d3.select(this)
-                              .attr("fill","orange");});
+                              .attr("fill","orange");})
+                        
+                        .on("mouseout", function(d) {
+                        d3.select(this)
+                              .attr("fill", "rgb(0, 0, " + (d*10) + ")");
+                              });
 
 	// select cells
 	var cells = rows.selectAll("g.cell").data(function(d){return d3.values(d);});
